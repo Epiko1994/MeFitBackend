@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    environment:
+      DATABASE_URL: postgresql://postgres:5432/MeFit?sslmode=prefer&user=postgres&password=supersecretpassword
+    ports:
+      - "8080:8080"
+
+  postgres:
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: supersecretpassword
+      POSTGRES_DB: MeFit
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - '127.0.0.1:5050:5432'
+    volumes:
+      - postgresdata:/var/lib/postgresql/data/pgdata
+
+volumes:
+  postgresdata: {}
