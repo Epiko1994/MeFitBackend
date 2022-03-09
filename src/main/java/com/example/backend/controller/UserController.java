@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("/user")
 @RestController
@@ -23,6 +24,13 @@ public class UserController {
     @Operation(summary = "Get all users")
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Get a user by ID, else null")
+    public User getUserById(@PathVariable int id) {
+        Optional<User> user = userRepository.findById(id);
+        return user.orElse(null);
     }
 
     @PostMapping("")
