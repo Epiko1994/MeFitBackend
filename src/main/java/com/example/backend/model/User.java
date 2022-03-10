@@ -1,14 +1,12 @@
 package com.example.backend.model;
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
+@Table(name= "users")
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Integer userId;
 

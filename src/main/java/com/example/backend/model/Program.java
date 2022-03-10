@@ -1,18 +1,16 @@
 package com.example.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.UUID;
+
 
 @Entity
 @Table(name = "programs")
 public class Program {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "program_id")
     private Integer programId;
 

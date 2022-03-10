@@ -3,17 +3,15 @@ package com.example.backend.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name = "goals")
 public class Goal {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "goal_id")
     private Integer goalId;
 
@@ -21,7 +19,7 @@ public class Goal {
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<Workout> workouts = new ArrayList<>();
 
-    private LocalDateTime endDate;
+    private Date endDate;
 
     private boolean achieved;
 
@@ -35,7 +33,7 @@ public class Goal {
         return workouts;
     }
 
-    public LocalDateTime getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
