@@ -3,6 +3,7 @@ package com.example.backend.model;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -10,33 +11,27 @@ import java.util.UUID;
 @Table(name = "profiles")
 public class Profile {
     @Id
+    @GeneratedValue
     @Column(name = "profile_id")
-    @Type(type = "uuid-char")
-    private UUID profileId = UUID.randomUUID();
+    private Integer profileId;
 
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User userId;
 
-    @OneToMany
-    @JoinColumn(name = "goal_id", referencedColumnName = "goal_id")
-    private List<Goal> goals;
-
     @OneToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address addresses;
 
-    @OneToMany
-    @JoinColumn(name = "program_id", referencedColumnName = "program_id")
-    private List<Program> programs;
+    @OneToMany(mappedBy = "profile")
+    @Column(name = "program_id")
+    private List<Program> programs = new ArrayList<>();
 
-    @OneToMany
-    @JoinColumn(name = "workout_id", referencedColumnName = "workout_id")
-    private List<Workout> workouts;
+    @OneToMany(mappedBy = "profile")
+    @Column(name = "workout_id")
+    private List<Workout> workouts = new ArrayList<>();
 
-    @OneToMany
-    @JoinColumn(name = "set_id", referencedColumnName = "set_id")
-    private List<Set> sets;
+    @OneToMany(mappedBy = "profile")
+    @Column(name = "set_id")
+    private List<Set> sets = new ArrayList<>();
 
     private Double weight;
 
