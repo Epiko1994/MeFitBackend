@@ -36,10 +36,9 @@ public class UserController {
     @PostMapping("")
     @Operation(summary = "Register a user - Returns the new user if saved successful, else null")
     public User registerUser(@RequestBody User user) {
-        Optional<User> userExist = userRepository.findById(user.getEmail());
+        Optional<User> userExist = userRepository.findByEmail(user.getEmail());
         if(userExist.isEmpty()) {
-            userRepository.save(user);
-            return userRepository.getById(user.getEmail());
+            return userRepository.save(user);
         }
         return null;
     }
