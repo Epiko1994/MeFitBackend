@@ -1,10 +1,11 @@
 language: java
 jdk:
   - openjdk17
+services:
+  - docker
 install:
   - ./gradlew assemble
   - true
 deploy:
-  - heroku container:push -a mefitbackend-ajlm web
-  provider: heroku
-  app: mefitbackend-ajlm
+  provider: script
+  script: heroku container:push -a mefitbackend-ajlm web
