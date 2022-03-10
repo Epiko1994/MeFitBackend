@@ -1,1 +1,6 @@
 language: java
+install: ./gradlew assemble
+deploy:
+  provider: heroku
+  app:
+    main: mefitbackend-ajlm
