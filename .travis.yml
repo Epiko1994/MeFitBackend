@@ -9,3 +9,5 @@ install:
 deploy:
   provider: script
   script: heroku container:push -a mefitbackend-ajlm web
+  on:
+    branch: travisci
