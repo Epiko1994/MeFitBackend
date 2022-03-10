@@ -7,5 +7,4 @@ install:
 deploy:
   - heroku container:push -a mefitbackend-ajlm web
   provider: heroku
-  app:
-    main: mefitbackend-ajlm
+  app: mefitbackend-ajlm
