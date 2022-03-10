@@ -1,4 +1,6 @@
 language: java
+jdk:
+  - openjdk17
 install: ./gradlew assemble
 deploy:
   provider: heroku
