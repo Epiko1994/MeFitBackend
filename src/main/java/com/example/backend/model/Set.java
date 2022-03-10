@@ -11,7 +11,7 @@ import java.util.UUID;
 @Table(name = "sets")
 public class Set {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "set_id")
     private Integer setId;
 

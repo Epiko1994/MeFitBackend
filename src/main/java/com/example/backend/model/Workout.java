@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name = "workouts")
 public class Workout {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "workout_id")
     private Integer workoutId;
 
