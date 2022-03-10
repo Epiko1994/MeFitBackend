@@ -8,6 +8,8 @@ install:
   - true
 deploy:
   provider: script
-  script: heroku container:push -a mefitbackend-ajlm web
+  script:
+    - ( echo "$heroku-email" echo "$heroku-password" ) | heroku container:login
+    - heroku container:push -a mefitbackend-ajlm web
   on:
     branch: travisci
