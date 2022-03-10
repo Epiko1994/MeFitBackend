@@ -41,4 +41,46 @@ public class Profile {
     private String medicalConditions;
 
     private String disabilities;
+
+    public Profile() {}
+
+    public Integer getProfileId() {
+        return profileId;
+    }
+
+    public User getUserId() {
+        return userId;
+    }
+
+    public Address getAddresses() {
+        return addresses;
+    }
+
+    public List<Program> getPrograms() {
+        return programs;
+    }
+
+    public List<Workout> getWorkouts() {
+        return workouts;
+    }
+
+    public List<Set> getSets() {
+        return sets;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public Double getHeight() {
+        return height;
+    }
+
+    public String getMedicalConditions() {
+        return medicalConditions;
+    }
+
+    public String getDisabilities() {
+        return disabilities;
+    }
 }

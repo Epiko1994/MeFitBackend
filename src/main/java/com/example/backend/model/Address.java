@@ -27,4 +27,36 @@ public class Address {
     private String country;
 
     public Address() {}
+
+    public Integer getAddressId() {
+        return addressId;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public String getAddressLine1() {
+        return addressLine1;
+    }
+
+    public String getAddressLine2() {
+        return addressLine2;
+    }
+
+    public String getAddressLine3() {
+        return addressLine3;
+    }
+
+    public Integer getPostalCode() {
+        return postalCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
 }

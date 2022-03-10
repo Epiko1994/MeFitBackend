@@ -28,4 +28,24 @@ public class Program {
     private String category;
 
     public Program() {}
+
+    public Integer getProgramId() {
+        return programId;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public List<Workout> getWorkouts() {
+        return workouts;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
 }

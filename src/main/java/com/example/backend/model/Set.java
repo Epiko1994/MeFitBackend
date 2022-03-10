@@ -28,4 +28,24 @@ public class Set {
     private Integer exerciseRepetitions;
 
     public Set() {}
+
+    public Integer getSetId() {
+        return setId;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public List<Exercise> getExercises() {
+        return exercises;
+    }
+
+    public Workout getWorkout() {
+        return workout;
+    }
+
+    public Integer getExerciseRepetitions() {
+        return exerciseRepetitions;
+    }
 }

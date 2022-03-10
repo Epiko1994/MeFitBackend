@@ -26,4 +26,20 @@ public class Goal {
     private boolean achieved;
 
     public Goal() {}
+
+    public Integer getGoalId() {
+        return goalId;
+    }
+
+    public List<Workout> getWorkouts() {
+        return workouts;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public boolean isAchieved() {
+        return achieved;
+    }
 }
