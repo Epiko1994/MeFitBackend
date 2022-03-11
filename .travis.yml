@@ -12,7 +12,7 @@ deploy:
     ( echo "$HEROKU_EMAIL" echo "$HEROKU_PASSWORD" ) | heroku container:login &&
     heroku container:push -a mefitbackend-ajlm-test web &&
     heroku container:release web -a mefitbackend-ajlm-test
-  on:
-    branch:
-      main &&
-      travisci
+  #on:
+    #branch:
+      #main &&
+      #travisci
