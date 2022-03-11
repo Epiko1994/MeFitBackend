@@ -9,8 +9,8 @@ install:
 deploy:
   provider: heroku
   run:
-    - '( echo "$HEROKU_EMAIL" echo "$HEROKU_PASSWORD" ) | heroku container:login'
-    - 'heroku container:push -a mefitbackend-ajlm-test web'
-    - 'heroku container:release web -a mefitbackend-ajlm-test'
+    - ( echo "$HEROKU_EMAIL" echo "$HEROKU_PASSWORD" ) | heroku container:login
+    - heroku container:push -a mefitbackend-ajlm-test web
+    - heroku container:release web -a mefitbackend-ajlm-test
   app:
     - mefitbackend-ajlm
