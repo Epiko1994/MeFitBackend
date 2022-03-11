@@ -1,10 +1,18 @@
 language: java
 jdk:
   - openjdk17
+services:
+  - docker
 install:
   - ./gradlew assemble
   - true
 deploy:
-  provider: heroku
-  app:
-    main: mefitbackend-ajlm
+  provider: script
+  script:
+    ( echo "$HEROKU_EMAIL" echo "$HEROKU_PASSWORD" ) | heroku container:login &&
+    heroku container:push -a mefitbackend-ajlm-test web &&
+    heroku container:release web -a mefitbackend-ajlm-test
+  on:
+    branches:
+      - main
+      - travisci
