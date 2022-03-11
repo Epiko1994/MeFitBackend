@@ -36,11 +36,15 @@ public class ProfileController {
     @PostMapping("")
     @Operation(summary = "Create profile - returns created profile if success, else null")
     public Profile createProfile(@RequestBody Profile profile) {
+        // Missing check if exist functionality.
+        /*
         Optional<Profile> profileExist = profileRepository.findByEmail(profile.getEmail);
         if(profileExist.isEmpty()){
             return profileRepository.save(profile);
         }
         return null;
+        */
+        return profileRepository.save(profile);
     }
 
 }
