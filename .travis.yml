@@ -5,14 +5,10 @@ services:
   - docker
 install:
   - ./gradlew assemble
-before_deploy:
-  ( echo "$HEROKU_EMAIL" echo "$HEROKU_PASSWORD" ) | heroku container:login &&
-  heroku container:push -a mefitbackend-ajlm-test web
+
 deploy:
-  provider: script
-  script:
-    heroku container:release web -a mefitbackend-ajlm-test
-  on:
-    branches:
-      - main
-      - travisci
+  provider: heroku
+  run:
+    - '( echo "$HEROKU_EMAIL" echo "$HEROKU_PASSWORD" ) | heroku container:login'
+    - 'heroku container:push -a mefitbackend-ajlm-test web'
+    - 'heroku container:release web -a mefitbackend-ajlm-test'
