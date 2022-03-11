@@ -19,8 +19,8 @@ public class AddressController {
     public void registerUser() {
     }
 
-    @PostMapping("/login")
+    /*@PostMapping("/login")
     public void loginUser(@RequestBody Address address) {
 
-    }
+    }*/
 }
