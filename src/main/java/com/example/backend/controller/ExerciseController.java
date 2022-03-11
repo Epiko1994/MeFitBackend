@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @Tag(name = "Exercise")
 public class ExerciseController {
+    @CrossOrigin
     @GetMapping("")
     public List<Exercise> getAllExercises() {
         return null;
