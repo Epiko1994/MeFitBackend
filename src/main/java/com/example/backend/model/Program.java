@@ -1,9 +1,11 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Entity
@@ -16,6 +18,18 @@ public class Program {
 
     @ManyToOne
     private Profile profile;
+
+    @JsonGetter("workouts")
+    public List<String> workoutsGetter() {
+        if(workouts != null) {
+            return workouts.stream()
+                    .map(workout -> {
+                        return "/workout/" + workout.getWorkoutId();
+                    }).collect(Collectors.toList());
+        } else {
+            return null;
+        }
+    }
 
     @ManyToMany(mappedBy = "programs")
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
