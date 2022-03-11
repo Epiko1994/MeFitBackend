@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @Tag(name = "Exercise")
 public class ExerciseController {
-    @CrossOrigin(origins = "https://mefitbackend-ajlm.herokuapp.com")
+    @CrossOrigin
     @GetMapping("")
     public List<Exercise> getAllExercises() {
         return null;
