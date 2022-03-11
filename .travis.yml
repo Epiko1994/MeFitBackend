@@ -10,6 +10,6 @@ deploy:
   provider: script
   script:
     - ( echo "$HEROKU_EMAIL" echo "$HEROKU_PASSWORD" ) | heroku container:login
-    - heroku container:push -a mefitbackend-ajlm web
+    - heroku container:push -a mefitbackend-ajlm-test web
   on:
     branch: travisci
