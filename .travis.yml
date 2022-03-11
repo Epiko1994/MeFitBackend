@@ -1,0 +1,10 @@
+language: java
+jdk:
+  - openjdk17
+install:
+  - ./gradlew assemble
+  - true
+deploy:
+  provider: heroku
+  app:
+    main: mefitbackend-ajlm
