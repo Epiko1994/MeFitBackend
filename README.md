@@ -7,11 +7,14 @@ exercises as done as you complete them over the course of a week.
 
 ## Table of contents
 
-- [Background](https://github.com/Epiko1994/MeFitBackend#Background)
+- [Background](https://github.com/Epiko1994/MeFitBackend##Background)
 
-# Code standard
+## Background
 
-## General
+## Code standard
+
+
+### General
 #### Long descriptive method names are better than shorter ones, EG.
 ##### Good:
 private void getAllCharactersById() {
