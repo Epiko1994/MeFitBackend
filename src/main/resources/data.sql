@@ -1,13 +1,24 @@
-insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('lorem', 'Jasmin', 'Sorel', 'jsorel0@usgs.gov', false, false);
-insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('in', 'Marnie', 'Crimpe', 'mcrimpe1@opera.com', true, true);
-insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('tempus', 'Melantha', 'Burness', 'mburness2@creativecommons.org', true, false);
-insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('cum', 'Ward', 'D''Errico', 'wderrico3@japanpost.jp', true, false);
-insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('curabitur', 'Saidee', 'Butter', 'sbutter4@xing.com', true, true);
-insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('consequat', 'Jeffy', 'Davey', 'jdavey5@clickbank.net', true, true);
-insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('aenean', 'Madel', 'McAuliffe', 'mmcauliffe6@howstuffworks.com', false, false);
-insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('sed', 'Kelcey', 'Brashaw', 'kbrashaw7@netscape.com', false, true);
-insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('elit', 'Dyann', 'Keilty', 'dkeilty8@twitpic.com', false, true);
-insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('dui', 'Lula', 'Dunsire', 'ldunsire9@statcounter.com', false, false);
+insert into profiles (weight, height, medical_conditions, disabilities) values (65, 17, 'pede', 'in');
+insert into profiles (weight, height, medical_conditions, disabilities) values (13, 49, null, null);
+insert into profiles (weight, height, medical_conditions, disabilities) values (81, 5, 'in', 'elit');
+insert into profiles (weight, height, medical_conditions, disabilities) values (93, 92, null, null);
+insert into profiles (weight, height, medical_conditions, disabilities) values (57, 70, null, null);
+insert into profiles (weight, height, medical_conditions, disabilities) values (97, 64, null, null);
+insert into profiles (weight, height, medical_conditions, disabilities) values (33, 73, null, null);
+insert into profiles (weight, height, medical_conditions, disabilities) values (16, 82, 'congue', 'dui');
+insert into profiles (weight, height, medical_conditions, disabilities) values (42, 59, null, null);
+insert into profiles (weight, height, medical_conditions, disabilities) values (24, 78, null, null);
+
+insert into users (password, first_name, last_name, email, is_contributor, is_admin, profile_profile_id) values ('lorem', 'Jasmin', 'Sorel', 'jsorel0@usgs.gov', false, false, 1);
+insert into users (password, first_name, last_name, email, is_contributor, is_admin, profile_profile_id) values ('in', 'Marnie', 'Crimpe', 'mcrimpe1@opera.com', true, true, 2);
+insert into users (password, first_name, last_name, email, is_contributor, is_admin, profile_profile_id) values ('tempus', 'Melantha', 'Burness', 'mburness2@creativecommons.org', true, false, 3);
+insert into users (password, first_name, last_name, email, is_contributor, is_admin, profile_profile_id) values ('cum', 'Ward', 'D''Errico', 'wderrico3@japanpost.jp', true, false, 4);
+insert into users (password, first_name, last_name, email, is_contributor, is_admin, profile_profile_id) values ('curabitur', 'Saidee', 'Butter', 'sbutter4@xing.com', true, true, 5);
+insert into users (password, first_name, last_name, email, is_contributor, is_admin, profile_profile_id) values ('consequat', 'Jeffy', 'Davey', 'jdavey5@clickbank.net', true, true, 6);
+insert into users (password, first_name, last_name, email, is_contributor, is_admin, profile_profile_id) values ('aenean', 'Madel', 'McAuliffe', 'mmcauliffe6@howstuffworks.com', false, false, 7);
+insert into users (password, first_name, last_name, email, is_contributor, is_admin, profile_profile_id) values ('sed', 'Kelcey', 'Brashaw', 'kbrashaw7@netscape.com', false, true, 8);
+insert into users (password, first_name, last_name, email, is_contributor, is_admin, profile_profile_id) values ('elit', 'Dyann', 'Keilty', 'dkeilty8@twitpic.com', false, true, 9);
+insert into users (password, first_name, last_name, email, is_contributor, is_admin, profile_profile_id) values ('dui', 'Lula', 'Dunsire', 'ldunsire9@statcounter.com', false, false, 10);
 
 insert into addresses (address_line1, postal_code, city, country) values ('418 Independence Alley', 1182, 'Huangma', 'China');
 insert into addresses (address_line1, postal_code, city, country) values ('76652 8th Center', 4982, 'Radzyń Chełmiński', 'Poland');
@@ -42,16 +53,7 @@ insert into sets (exercise_repetitions) values (60);
 insert into sets (exercise_repetitions) values (37);
 insert into sets (exercise_repetitions) values (47);
 
-insert into profiles (weight, height, medical_conditions, disabilities) values (65, 17, 'pede', 'in');
-insert into profiles (weight, height, medical_conditions, disabilities) values (13, 49, null, null);
-insert into profiles (weight, height, medical_conditions, disabilities) values (81, 5, 'in', 'elit');
-insert into profiles (weight, height, medical_conditions, disabilities) values (93, 92, null, null);
-insert into profiles (weight, height, medical_conditions, disabilities) values (57, 70, null, null);
-insert into profiles (weight, height, medical_conditions, disabilities) values (97, 64, null, null);
-insert into profiles (weight, height, medical_conditions, disabilities) values (33, 73, null, null);
-insert into profiles (weight, height, medical_conditions, disabilities) values (16, 82, 'congue', 'dui');
-insert into profiles (weight, height, medical_conditions, disabilities) values (42, 59, null, null);
-insert into profiles (weight, height, medical_conditions, disabilities) values (24, 78, null, null);
+
 
 insert into goals (end_date, achieved) values ('2021-06-30', false);
 insert into goals (end_date, achieved) values ('2021-10-16', true);
