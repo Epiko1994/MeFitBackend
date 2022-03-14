@@ -1,11 +1,13 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "sets")
@@ -17,6 +19,18 @@ public class Set {
 
     @ManyToOne
     private Profile profile;
+
+    @JsonGetter("exercises")
+    public List<String> exercisesGetter() {
+        if(exercises != null) {
+            return exercises.stream()
+                    .map(exercise -> {
+                        return "/exercise/" + exercise.getExerciseId();
+                    }).collect(Collectors.toList());
+        } else {
+            return null;
+        }
+    }
 
     @OneToMany(mappedBy = "set")
     @Column(name = "exercises")

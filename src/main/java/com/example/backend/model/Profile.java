@@ -1,8 +1,11 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "profiles")
@@ -18,13 +21,49 @@ public class Profile {
     @OneToOne
     private Address addresses;
 
+    @JsonGetter("programs")
+    public List<String> programsGetter() {
+        if(programs != null) {
+            return programs.stream()
+                    .map(program -> {
+                        return "/program/" + program.getProgramId();
+                    }).collect(Collectors.toList());
+        } else {
+            return null;
+        }
+    }
+
     @OneToMany(mappedBy = "profile")
     @Column(name = "program_id")
     private List<Program> programs = new ArrayList<>();
 
+    @JsonGetter("workouts")
+    public List<String> workoutsGetter() {
+        if(workouts != null) {
+            return workouts.stream()
+                    .map(workout -> {
+                        return "/workout/" + workout.getWorkoutId();
+                    }).collect(Collectors.toList());
+        } else {
+            return null;
+        }
+    }
+
     @OneToMany(mappedBy = "profile")
     @Column(name = "workout_id")
     private List<Workout> workouts = new ArrayList<>();
+
+    @JsonGetter("sets")
+    public List<String> setsGetter() {
+        if(sets != null) {
+            return sets.stream()
+                    .map(set -> {
+                        return "/set/" + set.getSetId();
+                    }).collect(Collectors.toList());
+        } else {
+            return null;
+        }
+    }
 
     @OneToMany(mappedBy = "profile")
     @Column(name = "set_id")
