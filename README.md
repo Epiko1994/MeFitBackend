@@ -7,7 +7,7 @@ exercises as done as you complete them over the course of a week.
 
 ## Table of contents
 
-- [Background](https://github.com/Epiko1994/MeFitBackend/readme#Background)
+- [Background](https://github.com/Epiko1994/MeFitBackend/tree/readme#Background)
 
 ## Background
 
