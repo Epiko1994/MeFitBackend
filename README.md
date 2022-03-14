@@ -5,6 +5,8 @@ built with gradle, and a PostgreSQL database built with JPA and Hibernate.
 MeFit is a concept fitness app where you are able to set up weekly workout goals and mark individual
 exercises as done as you complete them over the course of a week.
 
+[Frontend](https://naughty-kowalevski-13870d.netlify.app/login)
+
 ## Table of contents
 
 - [Background](https://github.com/Epiko1994/MeFitBackend/tree/readme#background)
