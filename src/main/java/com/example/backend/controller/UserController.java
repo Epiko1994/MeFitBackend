@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RequestMapping("/user")
 @RestController
 @Tag(name = "User")
@@ -28,7 +29,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Get a user by ID, else null")
-    public User getUserById(@PathVariable int id) {
+    public User getUserById(@PathVariable Integer id) {
         Optional<User> user = userRepository.findById(id);
         return user.orElse(null);
     }

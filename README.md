@@ -9,13 +9,13 @@ exercises as done as you complete them over the course of a week.
 
 ## Table of contents
 
-- [Background](https://github.com/Epiko1994/MeFitBackend/tree/readme#background)
-- [A Primer on URIs](https://github.com/Epiko1994/MeFitBackend/tree/readme#a-primer-on-uris)
-- [Install](https://github.com/Epiko1994/MeFitBackend/tree/readme#install)
-- [Online Deployment](https://github.com/Epiko1994/MeFitBackend/tree/readme#online-deployment)
+- [Background](https://github.com/Epiko1994/MeFitBackend/readme#background)
+- [A Primer on URIs](https://github.com/Epiko1994/MeFitBackend/readme#a-primer-on-uris)
+- [Install](https://github.com/Epiko1994/MeFitBackend/readme#install)
+- [Online Deployment](https://github.com/Epiko1994/MeFitBackend/readme#online-deployment)
 - [Maintainers](https://github.com/Epiko1994/MeFitBackend/tree/readme#maintainers)
-- [License](https://github.com/Epiko1994/MeFitBackend/tree/readme#license)
-- [Code Standards](https://github.com/Epiko1994/MeFitBackend/tree/readme#code-standards)
+- [License](https://github.com/Epiko1994/MeFitBackend/readme#licenses)
+- [Code Standards](https://github.com/Epiko1994/MeFitBackend/readme#code-standard)
 
 ## Background
 
