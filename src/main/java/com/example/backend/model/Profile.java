@@ -12,21 +12,23 @@ import java.util.stream.Collectors;
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "profile_id")
-    private Integer profileId;
+    @Column(name = "id")
+    private Integer id;
 
-    @OneToOne
-    private User userId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
-    @OneToOne
-    private Address addresses;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
 
     @JsonGetter("programs")
     public List<String> programsGetter() {
         if(programs != null) {
             return programs.stream()
                     .map(program -> {
-                        return "/program/" + program.getProgramId();
+                        return "/program/" + program.getId();
                     }).collect(Collectors.toList());
         } else {
             return null;
@@ -34,7 +36,6 @@ public class Profile {
     }
 
     @OneToMany(mappedBy = "profile")
-    @Column(name = "program_id")
     private List<Program> programs = new ArrayList<>();
 
     @JsonGetter("workouts")
@@ -42,7 +43,7 @@ public class Profile {
         if(workouts != null) {
             return workouts.stream()
                     .map(workout -> {
-                        return "/workout/" + workout.getWorkoutId();
+                        return "/workout/" + workout.getId();
                     }).collect(Collectors.toList());
         } else {
             return null;
@@ -50,7 +51,6 @@ public class Profile {
     }
 
     @OneToMany(mappedBy = "profile")
-    @Column(name = "workout_id")
     private List<Workout> workouts = new ArrayList<>();
 
     @JsonGetter("sets")
@@ -58,7 +58,7 @@ public class Profile {
         if(sets != null) {
             return sets.stream()
                     .map(set -> {
-                        return "/set/" + set.getSetId();
+                        return "/set/" + set.getId();
                     }).collect(Collectors.toList());
         } else {
             return null;
@@ -66,7 +66,6 @@ public class Profile {
     }
 
     @OneToMany(mappedBy = "profile")
-    @Column(name = "set_id")
     private List<Set> sets = new ArrayList<>();
 
     private Double weight;
@@ -80,16 +79,16 @@ public class Profile {
 
     public Profile() {}
 
-    public Integer getProfileId() {
-        return profileId;
+    public Integer getId() {
+        return id;
     }
 
-    public User getUserId() {
-        return userId;
+    public Integer getUserId() {
+        return user.getId();
     }
 
-    public Address getAddresses() {
-        return addresses;
+    public Integer getAddressId() {
+        return address.getId();
     }
 
     public List<Program> getPrograms() {

@@ -14,10 +14,11 @@ import java.util.stream.Collectors;
 public class Set {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "set_id")
-    private Integer setId;
+    @Column(name = "id")
+    private Integer id;
 
     @ManyToOne
+    @JoinColumn(name = "profile_id")
     private Profile profile;
 
     @JsonGetter("exercises")
@@ -25,7 +26,7 @@ public class Set {
         if(exercises != null) {
             return exercises.stream()
                     .map(exercise -> {
-                        return "/exercise/" + exercise.getExerciseId();
+                        return "/exercise/" + exercise.getId();
                     }).collect(Collectors.toList());
         } else {
             return null;
@@ -33,7 +34,6 @@ public class Set {
     }
 
     @OneToMany(mappedBy = "set")
-    @Column(name = "exercises")
     private List<Exercise> exercises = new ArrayList<>();
 
     @ManyToOne
@@ -43,8 +43,8 @@ public class Set {
 
     public Set() {}
 
-    public Integer getSetId() {
-        return setId;
+    public Integer getId() {
+        return id;
     }
 
     public Profile getProfile() {

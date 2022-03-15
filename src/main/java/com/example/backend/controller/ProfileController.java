@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RequestMapping("/profile")
 @RestController
 @Tag(name = "Profile")
@@ -28,7 +29,7 @@ public class ProfileController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Get profile by ID")
-    public Profile getProfileById(@PathVariable int id){
+    public Profile getProfileById(@PathVariable Integer id){
         Optional<Profile> profileExist = profileRepository.findById(id);
         return profileExist.orElse(null);
     }

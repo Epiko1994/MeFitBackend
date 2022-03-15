@@ -7,10 +7,10 @@ import javax.persistence.*;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "address_id")
-    private Integer addressId;
+    @Column(name = "id")
+    private Integer id;
 
-    @OneToOne
+    @OneToOne(mappedBy = "address")
     private Profile profile;
 
     private String addressLine1;
@@ -27,8 +27,8 @@ public class Address {
 
     public Address() {}
 
-    public Integer getAddressId() {
-        return addressId;
+    public Integer getId() {
+        return id;
     }
 
     public Profile getProfile() {

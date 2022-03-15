@@ -20,6 +20,41 @@ insert into addresses (address_line1, postal_code, city, country) values ('17 De
 insert into addresses (address_line1, postal_code, city, country) values ('6403 Norway Maple Lane', 8717, 'Tangxi', 'China');
 insert into addresses (address_line1, postal_code, city, country) values ('373 Park Meadow Avenue', 4182, 'Miaoshi', 'China');
 
+
+insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (65, 17, 'pede', 'in', 1, 1);
+insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (13, 49, null, null, 2, 2);
+insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (81, 5, 'in', 'elit', 3, 3);
+insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (93, 92, null, null, 4, 4);
+insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (57, 70, null, null, 5, 5);
+insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (97, 64, null, null, 6, 6);
+insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (33, 73, null, null, 7, 7);
+insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (16, 82, 'congue', 'dui', 8, 8);
+insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (42, 59, null, null, 9, 9);
+insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (24, 78, null, null, 10, 10);
+
+
+insert into workouts (name, type, complete, profile_id) values ('orci', 'quam', true, 1);
+insert into workouts (name, type, complete, profile_id) values ('ipsum', 'potenti', true, 1);
+insert into workouts (name, type, complete, profile_id) values ('orci', 'at', true,2);
+insert into workouts (name, type, complete, profile_id) values ('eu', 'ante', false,3);
+insert into workouts (name, type, complete, profile_id) values ('id', 'parturient', true,4);
+insert into workouts (name, type, complete, profile_id) values ('libero', 'ipsum', false,5);
+insert into workouts (name, type, complete, profile_id) values ('vestibulum', 'ac', false,10);
+insert into workouts (name, type, complete, profile_id) values ('sit', 'tristique', true,6);
+insert into workouts (name, type, complete, profile_id) values ('nec', 'accumsan', true,8);
+insert into workouts (name, type, complete, profile_id) values ('dapibus', 'dui', false,9);
+
+insert into sets (exercise_repetitions, profile_id, workout_id ) values (45, 1, 1);
+insert into sets (exercise_repetitions, profile_id, workout_id ) values (83, 2, 2);
+insert into sets (exercise_repetitions, profile_id, workout_id ) values (41, 3, 3);
+insert into sets (exercise_repetitions, profile_id, workout_id ) values (11, 4, 4);
+insert into sets (exercise_repetitions, profile_id, workout_id ) values (95, 5, 5);
+insert into sets (exercise_repetitions, profile_id, workout_id ) values (94, 6, 6);
+insert into sets (exercise_repetitions, profile_id, workout_id ) values (60, 7, 7);
+insert into sets (exercise_repetitions, profile_id, workout_id ) values (37, 8, 8);
+insert into sets (exercise_repetitions, profile_id, workout_id ) values (47, 9, 9);
+insert into sets (exercise_repetitions, profile_id, workout_id ) values (34, 10, 10);
+
 insert into exercises (name, description, target_muscle_group, image, video_link) values ('Crunches', 'Lying on your back, feet on the gound and hands behind your head, crunch up and bring hands to touch knees before rolling back to the ground', 'Core', 'https://image.shutterstock.com/image-vector/woman-doing-crunches-gym-belly-600w-1234348741.jpg', 'https://www.youtube.com/embed/Xyd_fa5zoEU');
 insert into exercises (name, description, target_muscle_group, image, video_link) values ('Side plank', 'Start with elbow, hip and forearm on the floor. Raise hip until armpit level.', 'Core', 'https://image.shutterstock.com/image-photo/side-plank-exercise-athletic-woman-600w-1751568857.jpg', 'https://www.youtube.com/embed/rCxF2nG9vQ0');
 insert into exercises (name, description, target_muscle_group, image, video_link) values ('Plank', 'With both forearms and toes on the floor, keep head, shoulders, hips and knees aligned', 'Core', 'https://image.shutterstock.com/image-photo/strong-beautiful-fitness-girl-athletic-600w-1497529061.jpg', 'https://www.youtube.com/embed/yeKv5oX_6GY');
@@ -33,28 +68,6 @@ insert into exercises (name, description, target_muscle_group, image, video_link
 insert into exercises (name, description, target_muscle_group, image, video_link) values ('Lunges', 'Start standing upright hands on hips. Step forward with one foot.Back knee touches ground below hip', 'Lower body', 'https://thumbs.dreamstime.com/z/man-doing-dumbbell-walking-lunges-exercise-man-doing-dumbbell-walking-lunges-exercise-flat-vector-illustration-isolated-white-230812187.jpg', 'https://www.youtube.com/embed/Pt5ThtTfn_U');
 insert into exercises (name, description, target_muscle_group, image, video_link) values ('Hip raises', 'Start lying on your back, knees bend, feet on the floor. Lift hips off the floor until fully extended shouldblades lifted off the floor. Slowly lower back down', 'Lower body', 'https://image.shutterstock.com/z/stock-photo-hip-raises-360740402.jpg', 'https://www.youtube.com/embed/fDP6O_aJpDg');
 
-insert into sets (exercise_repetitions) values (34);
-insert into sets (exercise_repetitions) values (45);
-insert into sets (exercise_repetitions) values (83);
-insert into sets (exercise_repetitions) values (41);
-insert into sets (exercise_repetitions) values (11);
-insert into sets (exercise_repetitions) values (95);
-insert into sets (exercise_repetitions) values (94);
-insert into sets (exercise_repetitions) values (60);
-insert into sets (exercise_repetitions) values (37);
-insert into sets (exercise_repetitions) values (47);
-
-insert into profiles (weight, height, medical_conditions, disabilities) values (65, 17, 'pede', 'in');
-insert into profiles (weight, height, medical_conditions, disabilities) values (13, 49, null, null);
-insert into profiles (weight, height, medical_conditions, disabilities) values (81, 5, 'in', 'elit');
-insert into profiles (weight, height, medical_conditions, disabilities) values (93, 92, null, null);
-insert into profiles (weight, height, medical_conditions, disabilities) values (57, 70, null, null);
-insert into profiles (weight, height, medical_conditions, disabilities) values (97, 64, null, null);
-insert into profiles (weight, height, medical_conditions, disabilities) values (33, 73, null, null);
-insert into profiles (weight, height, medical_conditions, disabilities) values (16, 82, 'congue', 'dui');
-insert into profiles (weight, height, medical_conditions, disabilities) values (42, 59, null, null);
-insert into profiles (weight, height, medical_conditions, disabilities) values (24, 78, null, null);
-
 insert into goals (end_date, achieved) values ('2021-06-30', false);
 insert into goals (end_date, achieved) values ('2021-10-16', true);
 insert into goals (end_date, achieved) values ('2021-09-06', true);
@@ -66,24 +79,13 @@ insert into goals (end_date, achieved) values ('2021-05-04', true);
 insert into goals (end_date, achieved) values ('2021-05-29', false);
 insert into goals (end_date, achieved) values ('2021-03-14', false);
 
-insert into workouts (name, type, complete) values ('orci', 'quam', true);
-insert into workouts (name, type, complete) values ('ipsum', 'potenti', true);
-insert into workouts (name, type, complete) values ('orci', 'at', true);
-insert into workouts (name, type, complete) values ('eu', 'ante', false);
-insert into workouts (name, type, complete) values ('id', 'parturient', true);
-insert into workouts (name, type, complete) values ('libero', 'ipsum', false);
-insert into workouts (name, type, complete) values ('vestibulum', 'ac', false);
-insert into workouts (name, type, complete) values ('sit', 'tristique', true);
-insert into workouts (name, type, complete) values ('nec', 'accumsan', true);
-insert into workouts (name, type, complete) values ('dapibus', 'dui', false);
-
-insert into programs (name, category) values ('gravida', 'vel');
-insert into programs (name, category) values ('vel', 'at');
-insert into programs (name, category) values ('interdum', 'magna');
-insert into programs (name, category) values ('duis', 'ultrices');
-insert into programs (name, category) values ('montes', 'leo');
-insert into programs (name, category) values ('sit', 'at');
-insert into programs (name, category) values ('aliquam', 'tincidunt');
-insert into programs (name, category) values ('nulla', 'congue');
-insert into programs (name, category) values ('tristique', 'gravida');
-insert into programs (name, category) values ('magnis', 'id');
+insert into programs (name, category, profile_id) values ('vel', 'at', 1);
+insert into programs (name, category, profile_id) values ('interdum', 'magna', 2);
+insert into programs (name, category, profile_id) values ('duis', 'ultrices', 3);
+insert into programs (name, category, profile_id) values ('montes', 'leo', 10);
+insert into programs (name, category, profile_id) values ('sit', 'at', 4);
+insert into programs (name, category, profile_id) values ('aliquam', 'tincidunt', 5);
+insert into programs (name, category, profile_id) values ('nulla', 'congue', 6);
+insert into programs (name, category, profile_id) values ('tristique', 'gravida', 7);
+insert into programs (name, category, profile_id) values ('magnis', 'id', 8);
+insert into programs (name, category, profile_id) values ('gravida', 'vel', 9);

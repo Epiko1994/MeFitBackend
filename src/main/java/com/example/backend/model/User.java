@@ -7,10 +7,10 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Integer userId;
+    @Column(name = "id")
+    private Integer id;
 
-    @OneToOne
+    @OneToOne(mappedBy = "user")
     private Profile profile;
 
     private String password;
@@ -27,8 +27,8 @@ public class User {
 
     public User() {}
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getId() {
+        return id;
     }
 
     public Profile getProfile() {
