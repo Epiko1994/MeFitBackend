@@ -33,10 +33,7 @@ insert into exercises (name, description, target_muscle_group, image, video_link
 insert into exercises (name, description, target_muscle_group, image, video_link) values ('Lunges', 'Start standing upright hands on hips. Step forward with one foot.Back knee touches ground below hip', 'Lower body', 'https://thumbs.dreamstime.com/z/man-doing-dumbbell-walking-lunges-exercise-man-doing-dumbbell-walking-lunges-exercise-flat-vector-illustration-isolated-white-230812187.jpg', 'https://www.youtube.com/watch?v=QOVaHwm-Q6U');
 insert into exercises (name, description, target_muscle_group, image, video_link) values ('Hip raises', 'Start lying on your back, knees bend, feet on the floor. Lift hips off the floor until fully extended shouldblades lifted off the floor. Slowly lower back down', 'Lower body', 'https://image.shutterstock.com/z/stock-photo-hip-raises-360740402.jpg', 'https://www.youtube.com/watch?v=fDP6O_aJpDg');
 
-insert into sets (exercise_repetitions, exercise_id) values (1,10));
-insert into sets (exercise_repetitions, exercise_id) values (2,10);
-insert into sets (exercise_repetitions, exercise_id) values (3,30);
-insert into sets (exercise_repetitions, exercise_id) values (4,40);
+insert into sets (exercise_repetitions) values (34);
 insert into sets (exercise_repetitions) values (45);
 insert into sets (exercise_repetitions) values (83);
 insert into sets (exercise_repetitions) values (41);
