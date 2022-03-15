@@ -14,15 +14,15 @@ import java.util.stream.Collectors;
 public class Goal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "goal_id")
-    private Integer goalId;
+    @Column(name = "id")
+    private Integer id;
 
     @JsonGetter("workouts")
     public List<String> workoutsGetter() {
         if(workouts != null) {
             return workouts.stream()
                     .map(workout -> {
-                        return "/workout/" + workout.getWorkoutId();
+                        return "/workout/" + workout.getId();
                     }).collect(Collectors.toList());
         } else {
             return null;
@@ -39,8 +39,8 @@ public class Goal {
 
     public Goal() {}
 
-    public Integer getGoalId() {
-        return goalId;
+    public Integer getId() {
+        return id;
     }
 
     public List<Workout> getWorkouts() {

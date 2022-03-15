@@ -12,10 +12,11 @@ import java.util.stream.Collectors;
 public class Workout {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "workout_id")
-    private Integer workoutId;
+    @Column(name = "id")
+    private Integer id;
 
     @ManyToOne
+    @JoinColumn(name = "profile_id")
     private Profile profile;
 
     @JsonGetter("sets")
@@ -23,7 +24,7 @@ public class Workout {
         if(sets != null) {
             return sets.stream()
                     .map(set -> {
-                        return "/set/" + set.getSetId();
+                        return "/set/" + set.getId();
                     }).collect(Collectors.toList());
         } else {
             return null;
@@ -31,7 +32,6 @@ public class Workout {
     }
 
     @OneToMany(mappedBy = "workout")
-    @Column(name = "sets")
     private List<Set> sets = new ArrayList<>();
 
     @JsonGetter("goals")
@@ -39,7 +39,7 @@ public class Workout {
         if(goals != null) {
             return goals.stream()
                     .map(goal -> {
-                        return "/goal/" + goal.getGoalId();
+                        return "/goal/" + goal.getId();
                     }).collect(Collectors.toList());
         } else {
             return null;
@@ -54,7 +54,7 @@ public class Workout {
         if(programs != null) {
             return programs.stream()
                     .map(program -> {
-                        return "/program/" + program.getProgramId();
+                        return "/program/" + program.getId();
                     }).collect(Collectors.toList());
         } else {
             return null;
@@ -72,8 +72,8 @@ public class Workout {
 
     public Workout() {}
 
-    public Integer getWorkoutId() {
-        return workoutId;
+    public Integer getId() {
+        return id;
     }
 
     public Profile getProfile() {
