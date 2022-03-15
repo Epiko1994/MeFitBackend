@@ -13,10 +13,11 @@ import java.util.stream.Collectors;
 public class Program {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "program_id")
-    private Integer programId;
+    @Column(name = "id")
+    private Integer id;
 
     @ManyToOne
+    @JoinColumn(name = "profile_id")
     private Profile profile;
 
     @JsonGetter("workouts")
@@ -24,7 +25,7 @@ public class Program {
         if(workouts != null) {
             return workouts.stream()
                     .map(workout -> {
-                        return "/workout/" + workout.getWorkoutId();
+                        return "/workout/" + workout.getId();
                     }).collect(Collectors.toList());
         } else {
             return null;
@@ -41,8 +42,8 @@ public class Program {
 
     public Program() {}
 
-    public Integer getProgramId() {
-        return programId;
+    public Integer getId() {
+        return id;
     }
 
     public Profile getProfile() {

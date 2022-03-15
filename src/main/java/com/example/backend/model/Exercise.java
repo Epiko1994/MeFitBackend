@@ -7,10 +7,11 @@ import javax.persistence.*;
 public class Exercise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "exercise_id")
-    private Integer exerciseId;
+    @Column(name = "id")
+    private Integer id;
 
     @ManyToOne
+    @JoinColumn(name = "set_id")
     private Set set;
 
     private String name;
@@ -25,8 +26,8 @@ public class Exercise {
 
     public Exercise() {}
 
-    public Integer getExerciseId() {
-        return exerciseId;
+    public Integer getId() {
+        return id;
     }
 
     public Set getSet() {

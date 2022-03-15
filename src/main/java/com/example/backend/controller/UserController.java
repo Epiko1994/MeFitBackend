@@ -47,7 +47,7 @@ public class UserController {
     @PostMapping("/login")
     @Operation(summary = "Send a login request - Returns user if found, else null")
     public User loginUser(@RequestBody User user) {
-        Optional<User> userRequest = userRepository.findById(user.getUserId());
+        Optional<User> userRequest = userRepository.findById(user.getId());
         return userRequest.orElse(null);
     }
 }
