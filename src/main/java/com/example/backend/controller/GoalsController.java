@@ -28,7 +28,7 @@ public class GoalsController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Get goal by ID")
-    public Goal getGoalById(@PathVariable int id){
+    public Goal getGoalById(@PathVariable Integer id){
         Optional<Goal> goalExist = goalsRepository.findById(id);
         return goalExist.orElse(null);
     }
