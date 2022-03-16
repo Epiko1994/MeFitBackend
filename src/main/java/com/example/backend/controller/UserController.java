@@ -1,6 +1,8 @@
 package com.example.backend.controller;
 
+import com.example.backend.model.Profile;
 import com.example.backend.model.User;
+import com.example.backend.repository.ProfileRepository;
 import com.example.backend.repository.UserRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -15,10 +17,12 @@ import java.util.Optional;
 @Tag(name = "User")
 public class UserController {
 
+    final ProfileRepository profileRepository;
     final UserRepository userRepository;
 
-    public UserController(UserRepository userRepository) {
+    public UserController(UserRepository userRepository, ProfileRepository profileRepository) {
         this.userRepository = userRepository;
+        this.profileRepository = profileRepository;
     }
 
     @GetMapping("")
@@ -42,11 +46,13 @@ public class UserController {
     }
 
     @PostMapping("")
-    @Operation(summary = "Register a user - Returns the new user if saved successful, else null")
+    @Operation(summary = "Register a user with empty profile - Returns the new user if saved successful, else null")
     public User registerUser(@RequestBody User user) {
         Optional<User> userExist = userRepository.findByEmail(user.getEmail());
         if(userExist.isEmpty()) {
-            return userRepository.save(user);
+            Profile profile = new Profile(user);
+            profileRepository.save(profile);
+            return userRepository.getById(profile.getUserId());
         }
         return null;
     }

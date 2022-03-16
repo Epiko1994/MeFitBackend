@@ -79,6 +79,10 @@ public class Profile {
 
     public Profile() {}
 
+    public Profile(User user) {
+        this.user = user;
+    }
+
     public Integer getId() {
         return id;
     }
