@@ -36,7 +36,7 @@ public class UserController {
 
     @GetMapping("/email/{email}")
     @Operation(summary = "Get a user by email, else null")
-    public User getUserById(@PathVariable String email) {
+    public User getUserByEmail(@PathVariable String email) {
         Optional<User> user = userRepository.findByEmail(email);
         return user.orElse(null);
     }
