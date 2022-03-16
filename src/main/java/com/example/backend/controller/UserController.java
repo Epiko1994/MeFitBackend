@@ -34,6 +34,13 @@ public class UserController {
         return user.orElse(null);
     }
 
+    @GetMapping("/email/{email}")
+    @Operation(summary = "Get a user by email, else null")
+    public User getUserByEmail(@PathVariable String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        return user.orElse(null);
+    }
+
     @PostMapping("")
     @Operation(summary = "Register a user - Returns the new user if saved successful, else null")
     public User registerUser(@RequestBody User user) {
@@ -45,9 +52,9 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    @Operation(summary = "Send a login request - Returns user if found, else null")
+    @Operation(summary = "Send a login request (checks if e-mail exists) - Returns user if found, else null")
     public User loginUser(@RequestBody User user) {
-        Optional<User> userRequest = userRepository.findById(user.getId());
+        Optional<User> userRequest = userRepository.findByEmail(user.getEmail());
         return userRequest.orElse(null);
     }
 }
