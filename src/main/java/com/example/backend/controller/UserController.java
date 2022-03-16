@@ -34,6 +34,13 @@ public class UserController {
         return user.orElse(null);
     }
 
+    @GetMapping("/email/{email}")
+    @Operation(summary = "Get a user by email, else null")
+    public User getUserById(@PathVariable String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        return user.orElse(null);
+    }
+
     @PostMapping("")
     @Operation(summary = "Register a user - Returns the new user if saved successful, else null")
     public User registerUser(@RequestBody User user) {
