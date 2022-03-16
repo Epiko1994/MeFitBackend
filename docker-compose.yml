@@ -20,5 +20,31 @@ services:
     volumes:
       - postgresdata:/var/lib/postgresql/data/pgdata
 
+  keycloak-db:
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_DB: keycloak
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - keycloakdata:/var/lib/postgresql/data/pgdata
+
+  keycloak: # https://hub.docker.com/r/jboss/keycloak/
+    image: jboss/keycloak
+    restart: always
+    environment:
+      KEYCLOAK_USER: ${env.KEYCLOAK_USER}
+      KEYCLOAK_PASSWORD: ${env.KEYCLOAK_PASSWORD}
+      DB_VENDOR: postgres
+      DB_USER: keycloak
+      DB_PASSWORD: keycloak
+      DB_ADDR: keycloak-db
+    ports:
+      - '127.0.0.1:8083:8080'
+
+
 volumes:
   postgresdata: {}
+  keycloakdata: {}
