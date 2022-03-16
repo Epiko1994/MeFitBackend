@@ -52,9 +52,9 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    @Operation(summary = "Send a login request - Returns user if found, else null")
+    @Operation(summary = "Send a login request (checks if e-mail exists) - Returns user if found, else null")
     public User loginUser(@RequestBody User user) {
-        Optional<User> userRequest = userRepository.findById(user.getId());
+        Optional<User> userRequest = userRepository.findByEmail(user.getEmail());
         return userRequest.orElse(null);
     }
 }
