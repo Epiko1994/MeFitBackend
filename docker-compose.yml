@@ -4,7 +4,7 @@ services:
   web:
     build: .
     environment:
-      DATABASE_URL: postgresql://postgres:5432/MeFit?sslmode=prefer&user=postgres&password=supersecretpassword
+      DATABASE_URL: postgresql://postgres:5432/MeFit?sslmode=prefer&user=${env.PG_USER}&password=${env.PG_PASSWORD}
     ports:
       - "8080:8080"
 
@@ -12,7 +12,7 @@ services:
     image: postgres:14-alpine
     restart: always
     environment:
-      POSTGRES_PASSWORD: supersecretpassword
+      POSTGRES_PASSWORD: ${env.PG_PASSWORD}
       POSTGRES_DB: MeFit
       PGDATA: /var/lib/postgresql/data/pgdata
     ports:
