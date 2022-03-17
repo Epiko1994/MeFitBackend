@@ -81,6 +81,8 @@ public class Profile {
 
     public Profile(User user) {
         this.user = user;
+        // sets an empty address
+        this.address = new Address();
     }
 
     public Integer getId() {
