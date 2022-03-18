@@ -91,3 +91,10 @@ insert into programs (name, category, profile_id) values ('nulla', 'congue', 6);
 insert into programs (name, category, profile_id) values ('tristique', 'gravida', 7);
 insert into programs (name, category, profile_id) values ('magnis', 'id', 8);
 insert into programs (name, category, profile_id) values ('gravida', 'vel', 9);
+
+insert into workouts_programs (workouts_id, programs_id) values (1,1);
+insert into workouts_programs (workouts_id, programs_id) values (2,1);
+insert into workouts_programs (workouts_id, programs_id) values (8,1);
+insert into workouts_programs (workouts_id, programs_id) values (1,2);
+insert into workouts_programs (workouts_id, programs_id) values (5,2);
+insert into workouts_programs (workouts_id, programs_id) values (1,3);
