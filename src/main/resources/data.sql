@@ -45,6 +45,8 @@ insert into workouts (name, type, complete, profile_id) values ('nec', 'accumsan
 insert into workouts (name, type, complete, profile_id) values ('dapibus', 'dui', false,9);
 
 insert into sets (exercise_repetitions, profile_id, workout_id ) values (45, 1, 1);
+insert into sets (exercise_repetitions, profile_id, workout_id ) values (5, 1, 1);
+insert into sets (exercise_repetitions, profile_id, workout_id ) values (10, 1, 1);
 insert into sets (exercise_repetitions, profile_id, workout_id ) values (83, 2, 2);
 insert into sets (exercise_repetitions, profile_id, workout_id ) values (41, 3, 3);
 insert into sets (exercise_repetitions, profile_id, workout_id ) values (11, 4, 4);
