@@ -33,7 +33,6 @@ public class Program {
     }
 
     @ManyToMany(mappedBy = "programs")
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<Workout> workouts;
 
     private String name;
