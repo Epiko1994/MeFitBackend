@@ -1,11 +1,11 @@
 package com.example.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 
 @Entity
@@ -16,21 +16,10 @@ public class Program {
     @Column(name = "id")
     private Integer id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "profile_id")
     private Profile profile;
-
-    @JsonGetter("workouts")
-    public List<String> workoutsGetter() {
-        if(workouts != null) {
-            return workouts.stream()
-                    .map(workout -> {
-                        return "/workout/" + workout.getId();
-                    }).collect(Collectors.toList());
-        } else {
-            return null;
-        }
-    }
 
     @ManyToMany(mappedBy = "programs")
     private List<Workout> workouts;
@@ -60,4 +49,16 @@ public class Program {
     public String getCategory() {
         return category;
     }
+
+//    @JsonGetter("workouts")
+//    public List<String> workoutsGetter() {
+//        if(workouts != null) {
+//            return workouts.stream()
+//                    .map(workout -> {
+//                        return "/workout/" + workout.getId();
+//                    }).collect(Collectors.toList());
+//        } else {
+//            return null;
+//        }
+//    }
 }
