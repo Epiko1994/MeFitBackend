@@ -1,6 +1,7 @@
 package com.example.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,52 +16,19 @@ public class Workout {
     @Column(name = "id")
     private Integer id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "profile_id")
     private Profile profile;
 
-    @JsonGetter("sets")
-    public List<String> setsGetter() {
-        if(sets != null) {
-            return sets.stream()
-                    .map(set -> {
-                        return "/set/" + set.getId();
-                    }).collect(Collectors.toList());
-        } else {
-            return null;
-        }
-    }
-
     @OneToMany(mappedBy = "workout")
     private List<Set> sets = new ArrayList<>();
 
-    @JsonGetter("goals")
-    public List<String> goalsGetter() {
-        if(goals != null) {
-            return goals.stream()
-                    .map(goal -> {
-                        return "/goal/" + goal.getId();
-                    }).collect(Collectors.toList());
-        } else {
-            return null;
-        }
-    }
-
+    @JsonIgnore
     @ManyToMany
     private List<Goal> goals = new ArrayList<>();
 
-    @JsonGetter("programs")
-    public List<String> programsGetter() {
-        if(programs != null) {
-            return programs.stream()
-                    .map(program -> {
-                        return "/program/" + program.getId();
-                    }).collect(Collectors.toList());
-        } else {
-            return null;
-        }
-    }
-
+    @JsonIgnore
     @ManyToMany
     private List<Program> programs = new ArrayList<>();
 
@@ -103,4 +71,40 @@ public class Workout {
     public boolean isComplete() {
         return complete;
     }
+
+//    @JsonGetter("goals")
+//    public List<String> goalsGetter() {
+//        if(goals != null) {
+//            return goals.stream()
+//                    .map(goal -> {
+//                        return "/goal/" + goal.getId();
+//                    }).collect(Collectors.toList());
+//        } else {
+//            return null;
+//        }
+//    }
+//
+//    @JsonGetter("programs")
+//    public List<String> programsGetter() {
+//        if(programs != null) {
+//            return programs.stream()
+//                    .map(program -> {
+//                        return "/program/" + program.getId();
+//                    }).collect(Collectors.toList());
+//        } else {
+//            return null;
+//        }
+//    }
+
+//    @JsonGetter("sets")
+//    public List<String> setsGetter() {
+//        if(sets != null) {
+//            return sets.stream()
+//                    .map(set -> {
+//                        return "/set/" + set.getId();
+//                    }).collect(Collectors.toList());
+//        } else {
+//            return null;
+//        }
+//    }
 }
