@@ -5,8 +5,10 @@ import com.example.backend.model.User;
 import com.example.backend.repository.ExerciseRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,26 +25,24 @@ public class ExerciseController {
     @CrossOrigin
     @GetMapping("")
     @Operation(summary = "Get all exercises")
-    public List<Exercise> getAllExercises() {
-        return exerciseRepository.findAll();
+    public ResponseEntity<List<Exercise>> getAllExercises() {
+        return ResponseEntity.ok(exerciseRepository.findAll());
     }
 
     @CrossOrigin
     @GetMapping("/{id}")
     @Operation(summary = "Get exercise by its ID")
-    public Exercise getExerciseById(@PathVariable Integer id) {
+    public ResponseEntity<Exercise> getExerciseById(@PathVariable Integer id) {
         Optional<Exercise> exercise = exerciseRepository.findById(id);
-        return exercise.orElse(null);
+        if(exercise.isEmpty()) return ResponseEntity.badRequest().body(null);
+        return ResponseEntity.ok(exercise.get());
     }
 
     @CrossOrigin
     @PostMapping("")
     @Operation(summary = "Create an exercise")
-    public Exercise createExercise(@RequestBody Exercise exercise) {
-        Optional<Exercise> exerciseExist = exerciseRepository.findByName(exercise.getName());
-        if(exerciseExist.isEmpty()) {
-            return exerciseRepository.save(exercise);
-        }
-        return null;
+    public ResponseEntity<Exercise> createExercise(@RequestBody Exercise exercise) {
+        Exercise newExercise = exerciseRepository.save(exercise);
+        return ResponseEntity.created(URI.create("/exercise/" + newExercise.getId())).body(newExercise);
     }
 }
