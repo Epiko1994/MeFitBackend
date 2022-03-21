@@ -6,6 +6,7 @@ import com.example.backend.repository.ProfileRepository;
 import com.example.backend.repository.UserRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,15 +28,18 @@ public class UserController {
 
     @GetMapping("")
     @Operation(summary = "Get all users")
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public ResponseEntity<List<User>> getAllUsers() {
+        return ResponseEntity.ok(userRepository.findAll());
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get a user by ID, else null")
-    public User getUserById(@PathVariable Integer id) {
+    public ResponseEntity<User> getUserById(@PathVariable Integer id) {
         Optional<User> user = userRepository.findById(id);
-        return user.orElse(null);
+        if(user.isEmpty()){
+            return ResponseEntity.badRequest().body(null);
+        }
+        return ResponseEntity.ok(user.get());
     }
 
     @GetMapping("/email/{email}")
