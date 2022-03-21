@@ -5,10 +5,13 @@ import com.example.backend.model.User;
 import com.example.backend.repository.ProfileRepository;
 import com.example.backend.repository.UserRepository;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,37 +37,56 @@ public class UserController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Get a user by ID, else null")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User found and returned"),
+            @ApiResponse(responseCode = "404", description = "User was not found")
+    })
     public ResponseEntity<User> getUserById(@PathVariable Integer id) {
         Optional<User> user = userRepository.findById(id);
         if(user.isEmpty()){
-            return ResponseEntity.badRequest().body(null);
+            return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(user.get());
     }
 
-    @GetMapping("/email/{email}")
+    @GetMapping("/{email}")
     @Operation(summary = "Get a user by email, else null")
-    public User getUserByEmail(@PathVariable String email) {
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User found and returned"),
+            @ApiResponse(responseCode = "404", description = "User was not found")
+    })
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
         Optional<User> user = userRepository.findByEmail(email);
-        return user.orElse(null);
+        if(user.isEmpty()) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(user.get());
     }
 
     @PostMapping("")
     @Operation(summary = "Register a user with empty profile - Returns the new user if saved successful, else null")
-    public User registerUser(@RequestBody User user) {
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "User was successfully created"),
+            @ApiResponse(responseCode = "400", description = "User could not be created - user probably already exist")
+    })
+    public ResponseEntity<User> registerUser(@RequestBody User user) {
         Optional<User> userExist = userRepository.findByEmail(user.getEmail());
         if(userExist.isEmpty()) {
             Profile profile = new Profile(user);
             profileRepository.save(profile);
-            return userRepository.getById(profile.getUserId());
+            return ResponseEntity.created(URI.create("/user/" + profile.getUserId())).build();
         }
-        return null;
+        return ResponseEntity.badRequest().build();
     }
 
+    //TODO: Probably not a useful endpoint - does the same as getUserByEmail
     @PostMapping("/login")
     @Operation(summary = "Send a login request (checks if e-mail exists) - Returns user if found, else null")
-    public User loginUser(@RequestBody User user) {
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User was successfully found"),
+            @ApiResponse(responseCode = "404", description = "User was not found")
+    })
+    public ResponseEntity<User> loginUser(@RequestBody User user) {
         Optional<User> userRequest = userRepository.findByEmail(user.getEmail());
-        return userRequest.orElse(null);
+        if(userRequest.isEmpty()) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(userRequest.get());
     }
 }
