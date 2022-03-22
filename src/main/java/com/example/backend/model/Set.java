@@ -16,9 +16,8 @@ public class Set {
     private Integer id;
 
     @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "profile_id")
-    private Profile profile;
+    @ManyToMany(mappedBy = "sets")
+    private List<Profile> profiles;
 
     @OneToMany(mappedBy = "set")
     private List<Exercise> exercises = new ArrayList<>();
@@ -35,8 +34,8 @@ public class Set {
         return id;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public List<Profile> getProfile() {
+        return profiles;
     }
 
     public List<Exercise> getExercises() {

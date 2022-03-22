@@ -49,7 +49,7 @@ public class UserController {
         return ResponseEntity.ok(user.get());
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("email/{email}")
     @Operation(summary = "Get a user by email, else null")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User found and returned"),
@@ -88,5 +88,52 @@ public class UserController {
         Optional<User> userRequest = userRepository.findByEmail(user.getEmail());
         if(userRequest.isEmpty()) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(userRequest.get());
+    }
+
+    @DeleteMapping
+    @Operation(summary = "Delete a user by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User was successfully deleted"),
+            @ApiResponse(responseCode = "404", description = "User was not found")
+    })
+    public ResponseEntity<User> deleteUser(@RequestBody User user) {
+        Optional<User> userOptional = userRepository.findById(user.getId());
+        if(userOptional.isEmpty()) return ResponseEntity.notFound().build();
+        //profileRepository.deleteById(userOptional.get().getProfile().getId());
+        userRepository.delete(userOptional.get());
+        return ResponseEntity.ok().build();
+    }
+
+    @PatchMapping("")
+    @Operation(summary = "Update an existing user with new values")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User was successfully found and updated"),
+            @ApiResponse(responseCode = "404", description = "User was not found")
+    })
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
+        Optional<User> userOptional = userRepository.findById(user.getId());
+        if(userOptional.isEmpty()) return ResponseEntity.notFound().build();
+        else{
+            User updateUser = userOptional.get();
+            updateUser.setId(user.getId());
+            if(user.getEmail() != null){
+                 updateUser.setEmail(user.getEmail());
+            }
+            if(user.getProfile() != null){
+                updateUser.setProfile(user.getProfile());
+            }
+            if(user.getFirstName() != null){
+               updateUser.setFirstName(user.getFirstName());
+            }
+
+            if(user.getPassword() != null){
+                updateUser.setPassword(user.getPassword());
+            }
+            if(user.getLastName() != null){
+                updateUser.setLastName(user.getLastName());
+            }
+
+            return ResponseEntity.ok(userRepository.save(updateUser));
+        }
     }
 }

@@ -35,8 +35,8 @@ public class Profile {
         }
     }
 
-    @OneToMany(mappedBy = "profile")
-    private List<Program> programs = new ArrayList<>();
+    @ManyToMany
+    private List<Program> programs;
 
     @JsonGetter("workouts")
     public List<String> workoutsGetter() {
@@ -50,7 +50,7 @@ public class Profile {
         }
     }
 
-    @OneToMany(mappedBy = "profile")
+    @ManyToMany
     private List<Workout> workouts = new ArrayList<>();
 
     @JsonGetter("sets")
@@ -65,7 +65,7 @@ public class Profile {
         }
     }
 
-    @OneToMany(mappedBy = "profile")
+    @ManyToMany
     private List<Set> sets = new ArrayList<>();
 
     private Double weight;
@@ -123,5 +123,45 @@ public class Profile {
 
     public String getDisabilities() {
         return disabilities;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setPrograms(List<Program> programs) {
+        this.programs = programs;
+    }
+
+    public void setWorkouts(List<Workout> workouts) {
+        this.workouts = workouts;
+    }
+
+    public void setSets(List<Set> sets) {
+        this.sets = sets;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+
+    public void setHeight(Double height) {
+        this.height = height;
+    }
+
+    public void setMedicalConditions(String medicalConditions) {
+        this.medicalConditions = medicalConditions;
+    }
+
+    public void setDisabilities(String disabilities) {
+        this.disabilities = disabilities;
     }
 }

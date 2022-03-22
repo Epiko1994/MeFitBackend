@@ -10,7 +10,7 @@ public class Address {
     @Column(name = "id")
     private Integer id;
 
-    @OneToOne(mappedBy = "address")
+    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
     private Profile profile;
 
     private String addressLine1;

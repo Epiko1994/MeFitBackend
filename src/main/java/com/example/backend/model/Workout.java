@@ -1,12 +1,9 @@
 package com.example.backend.model;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "workouts")
@@ -17,9 +14,8 @@ public class Workout {
     private Integer id;
 
     @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "profile_id")
-    private Profile profile;
+    @ManyToMany(mappedBy = "workouts")
+    private List<Profile> profiles;
 
     @OneToMany(mappedBy = "workout")
     private List<Set> sets = new ArrayList<>();
@@ -44,8 +40,8 @@ public class Workout {
         return id;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public List<Profile> getProfile() {
+        return profiles;
     }
 
     public List<Set> getSets() {

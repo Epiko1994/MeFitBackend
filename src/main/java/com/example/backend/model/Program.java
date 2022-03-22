@@ -1,12 +1,8 @@
 package com.example.backend.model;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.List;
-
-
 
 @Entity
 @Table(name = "programs")
@@ -17,9 +13,9 @@ public class Program {
     private Integer id;
 
     @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "profile_id")
-    private Profile profile;
+    @ManyToMany(mappedBy = "programs")
+    private List<Profile> profiles;
+
 
     @ManyToMany(mappedBy = "programs")
     private List<Workout> workouts;
@@ -34,8 +30,8 @@ public class Program {
         return id;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public List<Profile> getProfile() {
+        return profiles;
     }
 
     public List<Workout> getWorkouts() {
@@ -49,6 +45,31 @@ public class Program {
     public String getCategory() {
         return category;
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<Profile> getProfiles() {
+        return profiles;
+    }
+
+    public void setProfiles(List<Profile> profiles) {
+        this.profiles = profiles;
+    }
+
+    public void setWorkouts(List<Workout> workouts) {
+        this.workouts = workouts;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
 
 //    @JsonGetter("workouts")
 //    public List<String> workoutsGetter() {

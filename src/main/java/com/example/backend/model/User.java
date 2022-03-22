@@ -10,7 +10,7 @@ public class User {
     @Column(name = "id")
     private Integer id;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Profile profile;
 
     private String password;
@@ -57,5 +57,37 @@ public class User {
 
     public boolean isAdmin() {
         return isAdmin;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setContributor(boolean contributor) {
+        isContributor = contributor;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }

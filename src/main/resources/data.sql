@@ -33,29 +33,29 @@ insert into profiles (weight, height, medical_conditions, disabilities, user_id,
 insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (24, 78, null, null, 10, 10);
 
 
-insert into workouts (name, type, complete, profile_id) values ('orci', 'quam', true, 1);
-insert into workouts (name, type, complete, profile_id) values ('ipsum', 'potenti', true, 1);
-insert into workouts (name, type, complete, profile_id) values ('orci', 'at', true,2);
-insert into workouts (name, type, complete, profile_id) values ('eu', 'ante', false,3);
-insert into workouts (name, type, complete, profile_id) values ('id', 'parturient', true,4);
-insert into workouts (name, type, complete, profile_id) values ('libero', 'ipsum', false,5);
-insert into workouts (name, type, complete, profile_id) values ('vestibulum', 'ac', false,10);
-insert into workouts (name, type, complete, profile_id) values ('sit', 'tristique', true,6);
-insert into workouts (name, type, complete, profile_id) values ('nec', 'accumsan', true,8);
-insert into workouts (name, type, complete, profile_id) values ('dapibus', 'dui', false,9);
+insert into workouts (name, type, complete) values ('orci', 'quam', true);
+insert into workouts (name, type, complete) values ('ipsum', 'potenti', true);
+insert into workouts (name, type, complete) values ('orci', 'at', true);
+insert into workouts (name, type, complete) values ('eu', 'ante', false);
+insert into workouts (name, type, complete) values ('id', 'parturient', true);
+insert into workouts (name, type, complete) values ('libero', 'ipsum', false);
+insert into workouts (name, type, complete) values ('vestibulum', 'ac', false);
+insert into workouts (name, type, complete) values ('sit', 'tristique', true);
+insert into workouts (name, type, complete) values ('nec', 'accumsan', true);
+insert into workouts (name, type, complete) values ('dapibus', 'dui', false);
 
-insert into sets (exercise_repetitions, profile_id, workout_id ) values (45, 1, 1);
-insert into sets (exercise_repetitions, profile_id, workout_id ) values (5, 1, 1);
-insert into sets (exercise_repetitions, profile_id, workout_id ) values (10, 1, 1);
-insert into sets (exercise_repetitions, profile_id, workout_id ) values (83, 2, 2);
-insert into sets (exercise_repetitions, profile_id, workout_id ) values (41, 3, 3);
-insert into sets (exercise_repetitions, profile_id, workout_id ) values (11, 4, 4);
-insert into sets (exercise_repetitions, profile_id, workout_id ) values (95, 5, 5);
-insert into sets (exercise_repetitions, profile_id, workout_id ) values (94, 6, 6);
-insert into sets (exercise_repetitions, profile_id, workout_id ) values (60, 7, 7);
-insert into sets (exercise_repetitions, profile_id, workout_id ) values (37, 8, 8);
-insert into sets (exercise_repetitions, profile_id, workout_id ) values (47, 9, 9);
-insert into sets (exercise_repetitions, profile_id, workout_id ) values (34, 10, 10);
+insert into sets (exercise_repetitions, workout_id ) values (45, 1);
+insert into sets (exercise_repetitions, workout_id ) values (5, 1);
+insert into sets (exercise_repetitions, workout_id ) values (10, 1);
+insert into sets (exercise_repetitions, workout_id ) values (83, 2);
+insert into sets (exercise_repetitions, workout_id ) values (41, 3);
+insert into sets (exercise_repetitions, workout_id ) values (11, 4);
+insert into sets (exercise_repetitions, workout_id ) values (95, 5);
+insert into sets (exercise_repetitions, workout_id ) values (94, 6);
+insert into sets (exercise_repetitions, workout_id ) values (60, 7);
+insert into sets (exercise_repetitions, workout_id ) values (37, 8);
+insert into sets (exercise_repetitions, workout_id ) values (47, 9);
+insert into sets (exercise_repetitions, workout_id ) values (34, 10);
 
 insert into exercises (set_id, name, description, target_muscle_group, image, video_link) values (1,'Crunches', 'Lying on your back, feet on the gound and hands behind your head, crunch up and bring hands to touch knees before rolling back to the ground', 'Core', 'https://image.shutterstock.com/image-vector/woman-doing-crunches-gym-belly-600w-1234348741.jpg', 'https://www.youtube.com/embed/Xyd_fa5zoEU');
 insert into exercises (set_id, name, description, target_muscle_group, image, video_link) values (2,'Side plank', 'Start with elbow, hip and forearm on the floor. Raise hip until armpit level.', 'Core', 'https://image.shutterstock.com/image-photo/side-plank-exercise-athletic-woman-600w-1751568857.jpg', 'https://www.youtube.com/embed/rCxF2nG9vQ0');
@@ -81,16 +81,16 @@ insert into goals (end_date, achieved) values ('2021-05-04', true);
 insert into goals (end_date, achieved) values ('2021-05-29', false);
 insert into goals (end_date, achieved) values ('2021-03-14', false);
 
-insert into programs (name, category, profile_id) values ('vel', 'at', 1);
-insert into programs (name, category, profile_id) values ('interdum', 'magna', 2);
-insert into programs (name, category, profile_id) values ('duis', 'ultrices', 3);
-insert into programs (name, category, profile_id) values ('montes', 'leo', 10);
-insert into programs (name, category, profile_id) values ('sit', 'at', 4);
-insert into programs (name, category, profile_id) values ('aliquam', 'tincidunt', 5);
-insert into programs (name, category, profile_id) values ('nulla', 'congue', 6);
-insert into programs (name, category, profile_id) values ('tristique', 'gravida', 7);
-insert into programs (name, category, profile_id) values ('magnis', 'id', 8);
-insert into programs (name, category, profile_id) values ('gravida', 'vel', 9);
+insert into programs (name, category) values ('vel', 'at');
+insert into programs (name, category) values ('interdum', 'magna');
+insert into programs (name, category) values ('duis', 'ultrices');
+insert into programs (name, category) values ('montes', 'leo');
+insert into programs (name, category) values ('sit', 'at');
+insert into programs (name, category) values ('aliquam', 'tincidunt');
+insert into programs (name, category) values ('nulla', 'congue');
+insert into programs (name, category) values ('tristique', 'gravida');
+insert into programs (name, category) values ('magnis', 'id');
+insert into programs (name, category) values ('gravida', 'vel');
 
 insert into workouts_programs (workouts_id, programs_id) values (1,1);
 insert into workouts_programs (workouts_id, programs_id) values (2,1);
@@ -98,3 +98,14 @@ insert into workouts_programs (workouts_id, programs_id) values (8,1);
 insert into workouts_programs (workouts_id, programs_id) values (1,2);
 insert into workouts_programs (workouts_id, programs_id) values (5,2);
 insert into workouts_programs (workouts_id, programs_id) values (1,3);
+
+insert into profiles_programs(programs_id, profiles_id) VALUES (1,1);
+insert into profiles_programs(programs_id, profiles_id) VALUES (1,2);
+
+insert into profiles_workouts(workouts_id, profiles_id) VALUES (1,1);
+insert into profiles_workouts(workouts_id, profiles_id) VALUES (1,2);
+insert into profiles_workouts(workouts_id, profiles_id) VALUES (2,1);
+
+insert into profiles_sets(profiles_id, sets_id) values (1,1);
+insert into profiles_sets(profiles_id, sets_id) values (1,2);
+insert into profiles_sets(profiles_id, sets_id) values (2,1);
