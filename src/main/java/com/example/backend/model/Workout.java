@@ -17,15 +17,15 @@ public class Workout {
     @ManyToMany(mappedBy = "workouts")
     private List<Profile> profiles;
 
-    @OneToMany(mappedBy = "workout")
+    @ManyToMany
     private List<Set> sets = new ArrayList<>();
 
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(mappedBy = "workouts")
     private List<Goal> goals = new ArrayList<>();
 
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(mappedBy = "workouts")
     private List<Program> programs = new ArrayList<>();
 
     private String name;

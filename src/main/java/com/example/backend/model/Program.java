@@ -17,7 +17,7 @@ public class Program {
     private List<Profile> profiles;
 
 
-    @ManyToMany(mappedBy = "programs")
+    @ManyToMany
     private List<Workout> workouts;
 
     private String name;
