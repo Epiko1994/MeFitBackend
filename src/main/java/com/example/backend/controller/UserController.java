@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -102,9 +103,10 @@ public class UserController {
     }
 
     @PatchMapping("")
-    @Operation(summary = "Update an existing user with new values")
+    @Operation(summary = "Update an existing user with new values - except password")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User was successfully found and updated"),
+            @ApiResponse(responseCode = "403", description = "Changing password is not allowed"),
             @ApiResponse(responseCode = "404", description = "User was not found")
     })
     public ResponseEntity<User> updateUser(@RequestBody User user) {
@@ -112,25 +114,32 @@ public class UserController {
         if(userOptional.isEmpty()) return ResponseEntity.notFound().build();
         else{
             User updateUser = userOptional.get();
-            updateUser.setId(user.getId());
-            if(user.getEmail() != null){
-                 updateUser.setEmail(user.getEmail());
-            }
-            if(user.getProfile() != null){
-                updateUser.setProfile(user.getProfile());
-            }
-            if(user.getFirstName() != null){
-               updateUser.setFirstName(user.getFirstName());
-            }
-
-            if(user.getPassword() != null){
-                updateUser.setPassword(user.getPassword());
-            }
-            if(user.getLastName() != null){
-                updateUser.setLastName(user.getLastName());
-            }
+            if(user.getPassword() != null) return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            if(user.getEmail() != null) updateUser.setEmail(user.getEmail());
+            if(user.getProfile() != null) updateUser.setProfile(user.getProfile());
+            if(user.getFirstName() != null) updateUser.setFirstName(user.getFirstName());
+            if(user.getLastName() != null) updateUser.setLastName(user.getLastName());
 
             return ResponseEntity.ok(userRepository.save(updateUser));
+        }
+    }
+
+    @PatchMapping("/password")
+    @Operation(summary = "Update an existing password")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User was successfully found and updated"),
+            @ApiResponse(responseCode = "404", description = "User was not found"),
+            @ApiResponse(responseCode = "422", description = "No password found in request")
+    })
+    public ResponseEntity<User> updatePassword(@RequestBody User user) {
+        Optional<User> userOptional = userRepository.findById(user.getId());
+        if(userOptional.isEmpty()) return ResponseEntity.notFound().build();
+        else{
+            User updateUser = userOptional.get();
+            if(user.getPassword() != null) {
+                updateUser.setPassword(user.getPassword());
+                return ResponseEntity.ok(userRepository.save(updateUser));
+            } else return ResponseEntity.unprocessableEntity().build();
         }
     }
 }
