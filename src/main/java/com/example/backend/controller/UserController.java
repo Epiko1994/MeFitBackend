@@ -43,14 +43,12 @@ public class UserController {
     })
     public ResponseEntity<User> getUserById(@PathVariable Integer id) {
         Optional<User> user = userRepository.findById(id);
-        if(user.isEmpty()){
-            return ResponseEntity.notFound().build();
-        }
+        if(user.isEmpty()) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(user.get());
     }
 
     @GetMapping("email/{email}")
-    @Operation(summary = "Get a user by email, else null")
+    @Operation(summary = "Get a user by email")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User found and returned"),
             @ApiResponse(responseCode = "404", description = "User was not found")
@@ -62,7 +60,7 @@ public class UserController {
     }
 
     @PostMapping("")
-    @Operation(summary = "Register a user with empty profile - Returns the new user if saved successful, else null")
+    @Operation(summary = "Register a user with empty profile - Returns path to new user")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "User was successfully created"),
             @ApiResponse(responseCode = "400", description = "User could not be created - user probably already exist")
@@ -79,15 +77,15 @@ public class UserController {
 
     //TODO: Probably not a useful endpoint - does the same as getUserByEmail
     @PostMapping("/login")
-    @Operation(summary = "Send a login request (checks if e-mail exists) - Returns user if found, else null")
+    @Operation(summary = "Send a login request (checks if e-mail exists)")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User was successfully found"),
             @ApiResponse(responseCode = "404", description = "User was not found")
     })
     public ResponseEntity<User> loginUser(@RequestBody User user) {
-        Optional<User> userRequest = userRepository.findByEmail(user.getEmail());
-        if(userRequest.isEmpty()) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(userRequest.get());
+        Optional<User> userOptional = userRepository.findByEmail(user.getEmail());
+        if(userOptional.isEmpty()) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(userOptional.get());
     }
 
     @DeleteMapping
@@ -99,7 +97,6 @@ public class UserController {
     public ResponseEntity<User> deleteUser(@RequestBody User user) {
         Optional<User> userOptional = userRepository.findById(user.getId());
         if(userOptional.isEmpty()) return ResponseEntity.notFound().build();
-        //profileRepository.deleteById(userOptional.get().getProfile().getId());
         userRepository.delete(userOptional.get());
         return ResponseEntity.ok().build();
     }
