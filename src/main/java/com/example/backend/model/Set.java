@@ -1,6 +1,5 @@
 package com.example.backend.model;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -23,8 +22,8 @@ public class Set {
     private List<Exercise> exercises = new ArrayList<>();
 
     @JsonIgnore
-    @ManyToOne
-    private Workout workout;
+    @ManyToMany(mappedBy = "sets")
+    private List<Workout> workouts;
 
     private Integer exerciseRepetitions;
 
@@ -42,8 +41,8 @@ public class Set {
         return exercises;
     }
 
-    public Workout getWorkout() {
-        return workout;
+    public List<Workout> getWorkout() {
+        return workouts;
     }
 
     public Integer getExerciseRepetitions() {
