@@ -29,9 +29,12 @@ public class Goal {
         }
     }
 
-    @ManyToMany(mappedBy = "goals")
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    @ManyToMany
     private List<Workout> workouts = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
 
     private Date endDate;
 

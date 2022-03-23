@@ -68,6 +68,9 @@ public class Profile {
     @ManyToMany
     private List<Set> sets = new ArrayList<>();
 
+    @OneToMany(mappedBy = "profile")
+    private List<Goal> goals;
+
     private Double weight;
 
     private Double height;
