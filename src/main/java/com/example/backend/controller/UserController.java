@@ -37,7 +37,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Get a user by ID, else null")
+    @Operation(summary = "Get a user by ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User found and returned"),
             @ApiResponse(responseCode = "404", description = "User was not found")
@@ -71,7 +71,7 @@ public class UserController {
         if(userExist.isEmpty()) {
             Profile profile = new Profile(user);
             profileRepository.save(profile);
-            return ResponseEntity.created(URI.create("/user/" + profile.getUserId())).build();
+            return ResponseEntity.created(URI.create("/user/" + profile.getUser().getId())).build();
         }
         return ResponseEntity.badRequest().build();
     }
@@ -116,7 +116,6 @@ public class UserController {
             User updateUser = userOptional.get();
             if(user.getPassword() != null) return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
             if(user.getEmail() != null) updateUser.setEmail(user.getEmail());
-            if(user.getProfile() != null) updateUser.setProfile(user.getProfile());
             if(user.getFirstName() != null) updateUser.setFirstName(user.getFirstName());
             if(user.getLastName() != null) updateUser.setLastName(user.getLastName());
 

@@ -63,11 +63,17 @@ public class ExerciseController {
     public ResponseEntity<Exercise> updateExerciseById(@RequestBody Exercise exercise){
         Optional<Exercise> exerciseOptional = exerciseRepository.findById(exercise.getId());
         if(exerciseOptional.isEmpty()) return ResponseEntity.notFound().build();
-        Exercise updatedExercise = exerciseRepository.save(exercise);
-        return ResponseEntity.created(URI.create("/exercise/" + updatedExercise.getId())).build();
+        else {
+            Exercise updateExercise = exerciseOptional.get();
+            if(exercise.getDescription() != null) updateExercise.setDescription(exercise.getDescription());
+            if(exercise.getImage() != null) updateExercise.setImage(exercise.getImage());
+            if(exercise.getName() != null) updateExercise.setName(exercise.getName());
+            if(exercise.getTargetMuscleGroup() != null) updateExercise.setTargetMuscleGroup(exercise.getTargetMuscleGroup());
+            if(exercise.getVideoLink() != null) updateExercise.setVideoLink(exercise.getVideoLink());
+
+            return ResponseEntity.ok(exerciseRepository.save(updateExercise));
+        }
     }
-
-
 
     @CrossOrigin
     @DeleteMapping("")

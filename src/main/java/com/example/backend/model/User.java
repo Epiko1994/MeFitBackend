@@ -31,10 +31,6 @@ public class User {
         return id;
     }
 
-    public Profile getProfile() {
-        return profile;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -61,10 +57,6 @@ public class User {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
     }
 
     public void setPassword(String password) {

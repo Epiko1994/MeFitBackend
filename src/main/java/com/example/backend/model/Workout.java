@@ -40,20 +40,8 @@ public class Workout {
         return id;
     }
 
-    public List<Profile> getProfile() {
-        return profiles;
-    }
-
     public List<Set> getSets() {
         return sets;
-    }
-
-    public List<Goal> getGoals() {
-        return goals;
-    }
-
-    public List<Program> getPrograms() {
-        return programs;
     }
 
     public String getName() {
@@ -67,40 +55,4 @@ public class Workout {
     public boolean isComplete() {
         return complete;
     }
-
-//    @JsonGetter("goals")
-//    public List<String> goalsGetter() {
-//        if(goals != null) {
-//            return goals.stream()
-//                    .map(goal -> {
-//                        return "/goal/" + goal.getId();
-//                    }).collect(Collectors.toList());
-//        } else {
-//            return null;
-//        }
-//    }
-//
-//    @JsonGetter("programs")
-//    public List<String> programsGetter() {
-//        if(programs != null) {
-//            return programs.stream()
-//                    .map(program -> {
-//                        return "/program/" + program.getId();
-//                    }).collect(Collectors.toList());
-//        } else {
-//            return null;
-//        }
-//    }
-
-//    @JsonGetter("sets")
-//    public List<String> setsGetter() {
-//        if(sets != null) {
-//            return sets.stream()
-//                    .map(set -> {
-//                        return "/set/" + set.getId();
-//                    }).collect(Collectors.toList());
-//        } else {
-//            return null;
-//        }
-//    }
 }

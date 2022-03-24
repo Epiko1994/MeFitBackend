@@ -23,47 +23,11 @@ public class Profile {
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
-    @JsonGetter("programs")
-    public List<String> programsGetter() {
-        if(programs != null) {
-            return programs.stream()
-                    .map(program -> {
-                        return "/program/" + program.getId();
-                    }).collect(Collectors.toList());
-        } else {
-            return null;
-        }
-    }
-
     @ManyToMany
     private List<Program> programs;
 
-    @JsonGetter("workouts")
-    public List<String> workoutsGetter() {
-        if(workouts != null) {
-            return workouts.stream()
-                    .map(workout -> {
-                        return "/workout/" + workout.getId();
-                    }).collect(Collectors.toList());
-        } else {
-            return null;
-        }
-    }
-
     @ManyToMany
     private List<Workout> workouts = new ArrayList<>();
-
-    @JsonGetter("sets")
-    public List<String> setsGetter() {
-        if(sets != null) {
-            return sets.stream()
-                    .map(set -> {
-                        return "/set/" + set.getId();
-                    }).collect(Collectors.toList());
-        } else {
-            return null;
-        }
-    }
 
     @ManyToMany
     private List<Set> sets = new ArrayList<>();
@@ -88,16 +52,20 @@ public class Profile {
         this.address = new Address();
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public List<Goal> getGoals() {
+        return goals;
+    }
+
     public Integer getId() {
         return id;
-    }
-
-    public Integer getUserId() {
-        return user.getId();
-    }
-
-    public Integer getAddressId() {
-        return address.getId();
     }
 
     public List<Program> getPrograms() {
@@ -167,4 +135,35 @@ public class Profile {
     public void setDisabilities(String disabilities) {
         this.disabilities = disabilities;
     }
+
+    @JsonGetter("workouts")
+    public List<String> workoutsGetter() {
+        if(workouts != null) {
+            return workouts.stream()
+                    .map(workout -> "/workout/" + workout.getId()).collect(Collectors.toList());
+        } else {
+            return null;
+        }
+    }
+
+    @JsonGetter("sets")
+    public List<String> setsGetter() {
+        if(sets != null) {
+            return sets.stream()
+                    .map(set -> "/set/" + set.getId()).collect(Collectors.toList());
+        } else {
+            return null;
+        }
+    }
+
+    @JsonGetter("programs")
+    public List<String> programsGetter() {
+        if(programs != null) {
+            return programs.stream()
+                    .map(program -> "/program/" + program.getId()).collect(Collectors.toList());
+        } else {
+            return null;
+        }
+    }
+
 }

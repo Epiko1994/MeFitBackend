@@ -1,6 +1,5 @@
 package com.example.backend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,10 +11,8 @@ public class Program {
     @Column(name = "id")
     private Integer id;
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "programs")
     private List<Profile> profiles;
-
 
     @ManyToMany
     private List<Workout> workouts;
@@ -28,10 +25,6 @@ public class Program {
 
     public Integer getId() {
         return id;
-    }
-
-    public List<Profile> getProfile() {
-        return profiles;
     }
 
     public List<Workout> getWorkouts() {
@@ -50,10 +43,6 @@ public class Program {
         this.id = id;
     }
 
-    public List<Profile> getProfiles() {
-        return profiles;
-    }
-
     public void setProfiles(List<Profile> profiles) {
         this.profiles = profiles;
     }
@@ -70,16 +59,4 @@ public class Program {
         this.category = category;
     }
 
-
-//    @JsonGetter("workouts")
-//    public List<String> workoutsGetter() {
-//        if(workouts != null) {
-//            return workouts.stream()
-//                    .map(workout -> {
-//                        return "/workout/" + workout.getId();
-//                    }).collect(Collectors.toList());
-//        } else {
-//            return null;
-//        }
-//    }
 }
