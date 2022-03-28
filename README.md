@@ -67,18 +67,57 @@ with a Swagger UI for documentation and test use.
 
 `public static void main(String[] args) {}`
 
-## Commit standard
-
-### When to commit
-
-
-### Commit structure
-#### Try to keep titles short, try to keep it under 40 characters
-- Added feature
-- Fixed feature
-- Updated feature
 
 
 ## Licenses
 
 This project is licensed under the standard [MIT](https://choosealicense.com/licenses/mit/) license.
+
+
+# Project approach
+
+### Technical tools
+
+- GitHub - collaboration
+- Netlify - Deployment and for CI/CD
+- Heroku - Deployment for backend
+- Swagger UI - Endpoint documentation
+- Gradle - Dependency management in backend
+
+### Project management tools
+
+- The project is managed through Trello
+- All decisions made are written on the projects Trello board
+- All tasks are delegated through Trello
+- GitHub
+    - Main branch is a protected branch and need to pass Netlify checks and minimum 2 reviews
+    - We solve our own merge conflicts before asking for reviews on out Pull Request
+
+### Commit standard
+
+Try to keep titles short, ideally under 40 characters
+- Added feature
+- Fixed feature
+- Updated feature
+
+
+
+### MVP
+
+Decisions regarding the MVP has been made with the intention of being customer-centric towards our hypothetical customer in mind. For this project that means:
+
+- Endpoints for displaying data (Create and Read) are prioritised over endpoints for editing data (Update and Delete)
+- Being able to visually show functionality is prioritised over perfect backend structure
+
+### Workflow / Teamwork
+
+- The four members of the team are divided with two members on backend and frontend respectively
+- Daily stand-up at 9.00
+- Weekly meeting with our mentor, Livinus, Mondays at 10.00
+- Continuous communication by:
+    - Marking on Trello the task you are working on
+    - Moving the task to "In progress" when work starts
+    - Moving the task to "Done" when definition of done has been achieved
+    - If a task cannot be marked as done, due to wait time on another task, it can be labelled with "needs more info"
+- There are no expectation of weekend work
+- We trust each-other's ability to organise one's own work, therefore we are flexible regarding work hours
