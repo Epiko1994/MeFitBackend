@@ -6,6 +6,6 @@ services:
 install:
   - ./gradlew assemble
 script:
-  - echo $env.HEROKU_EMAIL echo $env.HEROKU_PASSWORD | heroku container:login
+  - echo ${env.HEROKU_EMAIL} echo ${env.HEROKU_PASSWORD} | heroku container:login
   - heroku container:push -a mefitbackend-ajlm-test web
   - heroku container:release -a mefitbackend-ajlm-test web
