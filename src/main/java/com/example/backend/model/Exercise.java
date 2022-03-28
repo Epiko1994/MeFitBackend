@@ -1,17 +1,20 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name = "exercises")
 public class Exercise {
     @Id
-    @GeneratedValue
-    @Column(name = "address_id")
-    private Integer addressId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
+    @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "set_id")
     private Set set;
 
     private String name;
@@ -26,8 +29,8 @@ public class Exercise {
 
     public Exercise() {}
 
-    public Integer getAddressId() {
-        return addressId;
+    public Integer getId() {
+        return id;
     }
 
     public Set getSet() {

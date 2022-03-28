@@ -1,18 +1,16 @@
 package com.example.backend.model;
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
+@Table(name= "users")
 public class User {
     @Id
-    @GeneratedValue
-    @Column(name = "user_id")
-    private Integer userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
-    @OneToOne
+    @OneToOne(mappedBy = "user")
     private Profile profile;
 
     private String password;
@@ -29,8 +27,8 @@ public class User {
 
     public User() {}
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getId() {
+        return id;
     }
 
     public Profile getProfile() {

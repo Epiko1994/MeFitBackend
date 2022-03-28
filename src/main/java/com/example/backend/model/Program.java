@@ -1,26 +1,27 @@
 package com.example.backend.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import org.hibernate.annotations.Type;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.UUID;
+
+
 
 @Entity
 @Table(name = "programs")
 public class Program {
     @Id
-    @GeneratedValue
-    @Column(name = "program_id")
-    private Integer programId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
+    @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "profile_id")
     private Profile profile;
 
     @ManyToMany(mappedBy = "programs")
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<Workout> workouts;
 
     private String name;
@@ -29,8 +30,8 @@ public class Program {
 
     public Program() {}
 
-    public Integer getProgramId() {
-        return programId;
+    public Integer getId() {
+        return id;
     }
 
     public Profile getProfile() {
@@ -48,4 +49,16 @@ public class Program {
     public String getCategory() {
         return category;
     }
+
+//    @JsonGetter("workouts")
+//    public List<String> workoutsGetter() {
+//        if(workouts != null) {
+//            return workouts.stream()
+//                    .map(workout -> {
+//                        return "/workout/" + workout.getId();
+//                    }).collect(Collectors.toList());
+//        } else {
+//            return null;
+//        }
+//    }
 }

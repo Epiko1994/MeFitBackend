@@ -1,27 +1,34 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "workouts")
 public class Workout {
     @Id
-    @GeneratedValue
-    @Column(name = "workout_id")
-    private Integer workoutId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
+    @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "profile_id")
     private Profile profile;
 
     @OneToMany(mappedBy = "workout")
-    @Column(name = "sets")
     private List<Set> sets = new ArrayList<>();
 
+    @JsonIgnore
     @ManyToMany
     private List<Goal> goals = new ArrayList<>();
 
+    @JsonIgnore
     @ManyToMany
     private List<Program> programs = new ArrayList<>();
 
@@ -33,8 +40,8 @@ public class Workout {
 
     public Workout() {}
 
-    public Integer getWorkoutId() {
-        return workoutId;
+    public Integer getId() {
+        return id;
     }
 
     public Profile getProfile() {
@@ -64,4 +71,40 @@ public class Workout {
     public boolean isComplete() {
         return complete;
     }
+
+//    @JsonGetter("goals")
+//    public List<String> goalsGetter() {
+//        if(goals != null) {
+//            return goals.stream()
+//                    .map(goal -> {
+//                        return "/goal/" + goal.getId();
+//                    }).collect(Collectors.toList());
+//        } else {
+//            return null;
+//        }
+//    }
+//
+//    @JsonGetter("programs")
+//    public List<String> programsGetter() {
+//        if(programs != null) {
+//            return programs.stream()
+//                    .map(program -> {
+//                        return "/program/" + program.getId();
+//                    }).collect(Collectors.toList());
+//        } else {
+//            return null;
+//        }
+//    }
+
+//    @JsonGetter("sets")
+//    public List<String> setsGetter() {
+//        if(sets != null) {
+//            return sets.stream()
+//                    .map(set -> {
+//                        return "/set/" + set.getId();
+//                    }).collect(Collectors.toList());
+//        } else {
+//            return null;
+//        }
+//    }
 }

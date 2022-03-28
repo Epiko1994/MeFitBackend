@@ -1,17 +1,16 @@
 package com.example.backend.model;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name = "addresses")
 public class Address {
     @Id
-    @GeneratedValue
-    @Column(name = "address_id")
-    private Integer addressId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
-    @OneToOne
+    @OneToOne(mappedBy = "address")
     private Profile profile;
 
     private String addressLine1;
@@ -28,8 +27,8 @@ public class Address {
 
     public Address() {}
 
-    public Integer getAddressId() {
-        return addressId;
+    public Integer getId() {
+        return id;
     }
 
     public Profile getProfile() {

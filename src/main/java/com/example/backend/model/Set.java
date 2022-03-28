@@ -1,27 +1,29 @@
 package com.example.backend.model;
 
-import org.hibernate.annotations.Type;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name = "sets")
 public class Set {
     @Id
-    @GeneratedValue
-    @Column(name = "set_id")
-    private Integer setId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
+    @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "profile_id")
     private Profile profile;
 
     @OneToMany(mappedBy = "set")
-    @Column(name = "exercises")
     private List<Exercise> exercises = new ArrayList<>();
 
+    @JsonIgnore
     @ManyToOne
     private Workout workout;
 
@@ -29,8 +31,8 @@ public class Set {
 
     public Set() {}
 
-    public Integer getSetId() {
-        return setId;
+    public Integer getId() {
+        return id;
     }
 
     public Profile getProfile() {
@@ -48,4 +50,16 @@ public class Set {
     public Integer getExerciseRepetitions() {
         return exerciseRepetitions;
     }
+
+//    @JsonGetter("exercises")
+//    public List<String> exercisesGetter() {
+//        if(exercises != null) {
+//            return exercises.stream()
+//                    .map(exercise -> {
+//                        return "/exercise/" + exercise.getId();
+//                    }).collect(Collectors.toList());
+//        } else {
+//            return null;
+//        }
+//    }
 }
