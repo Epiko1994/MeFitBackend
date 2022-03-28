@@ -81,16 +81,16 @@ insert into goals (end_date, achieved) values ('2021-05-04', true);
 insert into goals (end_date, achieved) values ('2021-05-29', false);
 insert into goals (end_date, achieved) values ('2021-03-14', false);
 
-insert into programs (name, category, profile_id) values ('vel', 'at', 1);
-insert into programs (name, category, profile_id) values ('interdum', 'magna', 2);
-insert into programs (name, category, profile_id) values ('duis', 'ultrices', 3);
-insert into programs (name, category, profile_id) values ('montes', 'leo', 10);
-insert into programs (name, category, profile_id) values ('sit', 'at', 4);
-insert into programs (name, category, profile_id) values ('aliquam', 'tincidunt', 5);
-insert into programs (name, category, profile_id) values ('nulla', 'congue', 6);
-insert into programs (name, category, profile_id) values ('tristique', 'gravida', 7);
-insert into programs (name, category, profile_id) values ('magnis', 'id', 8);
-insert into programs (name, category, profile_id) values ('gravida', 'vel', 9);
+insert into programs (name, category, profile_id) values ('Cool workout programme', 'though', 1);
+insert into programs (name, category, profile_id) values ('The beast', 'medium', 2);
+insert into programs (name, category, profile_id) values ('Coolest workout programme', 'though', 3);
+insert into programs (name, category, profile_id) values ('Second coolest workout programme', 'easy', 10);
+insert into programs (name, category, profile_id) values ('Alright workout programme', 'easy', 4);
+insert into programs (name, category, profile_id) values ('Fitness King', 'easy', 5);
+insert into programs (name, category, profile_id) values ('Fitness Queen', 'though', 6);
+insert into programs (name, category, profile_id) values ('Downward dog', 'medium', 7);
+insert into programs (name, category, profile_id) values ('Programme for Programmers', 'easy', 8);
+insert into programs (name, category, profile_id) values ('Meh programme', 'easy', 9);
 
 insert into workouts_programs (workouts_id, programs_id) values (1,1);
 insert into workouts_programs (workouts_id, programs_id) values (2,1);
