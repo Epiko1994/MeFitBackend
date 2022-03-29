@@ -81,16 +81,16 @@ insert into goals (end_date, achieved) values ('2021-05-04', true);
 insert into goals (end_date, achieved) values ('2021-05-29', false);
 insert into goals (end_date, achieved) values ('2021-03-14', false);
 
-insert into programs (name, category) values ('vel', 'at');
-insert into programs (name, category) values ('interdum', 'magna');
-insert into programs (name, category) values ('duis', 'ultrices');
-insert into programs (name, category) values ('montes', 'leo');
-insert into programs (name, category) values ('sit', 'at');
-insert into programs (name, category) values ('aliquam', 'tincidunt');
-insert into programs (name, category) values ('nulla', 'congue');
-insert into programs (name, category) values ('tristique', 'gravida');
-insert into programs (name, category) values ('magnis', 'id');
-insert into programs (name, category) values ('gravida', 'vel');
+insert into programs (name, category) values ('Cool workout programme', 'though');
+insert into programs (name, category) values ('The beast', 'medium');
+insert into programs (name, category) values ('Coolest workout programme', 'though');
+insert into programs (name, category) values ('Second coolest workout programme', 'easy');
+insert into programs (name, category) values ('Alright workout programme', 'easy');
+insert into programs (name, category) values ('Fitness King', 'easy');
+insert into programs (name, category) values ('Fitness Queen', 'though');
+insert into programs (name, category) values ('Downward dog', 'medium');
+insert into programs (name, category) values ('Programme for Programmers', 'easy');
+insert into programs (name, category) values ('Meh programme', 'easy');
 
 insert into workouts_programs (workouts_id, programs_id) values (1,1);
 insert into workouts_programs (workouts_id, programs_id) values (2,1);
