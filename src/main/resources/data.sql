@@ -33,16 +33,16 @@ insert into profiles (weight, height, medical_conditions, disabilities, user_id,
 insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (24, 78, null, null, 10, 10);
 
 
-insert into workouts (name, type, complete) values ('orci', 'quam', true);
-insert into workouts (name, type, complete) values ('ipsum', 'potenti', true);
-insert into workouts (name, type, complete) values ('orci', 'at', true);
-insert into workouts (name, type, complete) values ('eu', 'ante', false);
-insert into workouts (name, type, complete) values ('id', 'parturient', true);
-insert into workouts (name, type, complete) values ('libero', 'ipsum', false);
-insert into workouts (name, type, complete) values ('vestibulum', 'ac', false);
-insert into workouts (name, type, complete) values ('sit', 'tristique', true);
-insert into workouts (name, type, complete) values ('nec', 'accumsan', true);
-insert into workouts (name, type, complete) values ('dapibus', 'dui', false);
+insert into workouts (name, type, complete) values ('Workout1', 'type1', true);
+insert into workouts (name, type, complete) values ('Workout2', 'type2', true);
+insert into workouts (name, type, complete) values ('Workout3', 'type3', true);
+insert into workouts (name, type, complete) values ('Workout4', 'type4', false);
+insert into workouts (name, type, complete) values ('Workout5', 'type5', true);
+insert into workouts (name, type, complete) values ('Workout6', 'type6', false);
+insert into workouts (name, type, complete) values ('Workout7', 'type7', false);
+insert into workouts (name, type, complete) values ('Workout8', 'type8', true);
+insert into workouts (name, type, complete) values ('Workout9', 'type9', true);
+insert into workouts (name, type, complete) values ('Workout10', 'type10', false);
 
 insert into sets (exercise_repetitions) values (45);
 insert into sets (exercise_repetitions) values (5);
