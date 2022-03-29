@@ -1,4 +1,4 @@
-insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('lorem', 'Jasmin', 'Sorel', 'jsorel0@usgs.gov', false, false);
+insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('1234', 'Jasmin', 'Sorel', 'mail@email.com', false, false);
 insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('in', 'Marnie', 'Crimpe', 'mcrimpe1@opera.com', true, true);
 insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('tempus', 'Melantha', 'Burness', 'mburness2@creativecommons.org', true, false);
 insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('cum', 'Ward', 'D''Errico', 'wderrico3@japanpost.jp', true, false);
@@ -7,7 +7,7 @@ insert into users (password, first_name, last_name, email, is_contributor, is_ad
 insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('aenean', 'Madel', 'McAuliffe', 'mmcauliffe6@howstuffworks.com', false, false);
 insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('sed', 'Kelcey', 'Brashaw', 'kbrashaw7@netscape.com', false, true);
 insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('elit', 'Dyann', 'Keilty', 'dkeilty8@twitpic.com', false, true);
-insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('dui', 'Lula', 'Dunsire', 'ldunsire9@statcounter.com', false, false);
+insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('1234', 'Cool User', 'Dunsire', 'mail@email.com', false, false);
 
 insert into addresses (address_line1, postal_code, city, country) values ('418 Independence Alley', 1182, 'Huangma', 'China');
 insert into addresses (address_line1, postal_code, city, country) values ('76652 8th Center', 4982, 'Radzyń Chełmiński', 'Poland');
@@ -21,7 +21,7 @@ insert into addresses (address_line1, postal_code, city, country) values ('6403 
 insert into addresses (address_line1, postal_code, city, country) values ('373 Park Meadow Avenue', 4182, 'Miaoshi', 'China');
 
 
-insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (65, 17, 'pede', 'in', 1, 1);
+insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (65, 160, 'Diabeties', null, 1, 1);
 insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (13, 49, null, null, 2, 2);
 insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (81, 5, 'in', 'elit', 3, 3);
 insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (93, 92, null, null, 4, 4);
@@ -30,7 +30,7 @@ insert into profiles (weight, height, medical_conditions, disabilities, user_id,
 insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (33, 73, null, null, 7, 7);
 insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (16, 82, 'congue', 'dui', 8, 8);
 insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (42, 59, null, null, 9, 9);
-insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (24, 78, null, null, 10, 10);
+insert into profiles (weight, height, medical_conditions, disabilities, user_id, address_id) values (70, 180, null, 'Only one leg', 10, 10);
 
 
 insert into workouts (name, type, complete, profile_id) values ('orci', 'quam', true, 1);
@@ -81,16 +81,16 @@ insert into goals (end_date, achieved) values ('2021-05-04', true);
 insert into goals (end_date, achieved) values ('2021-05-29', false);
 insert into goals (end_date, achieved) values ('2021-03-14', false);
 
-insert into programs (name, category, profile_id) values ('vel', 'at', 1);
-insert into programs (name, category, profile_id) values ('interdum', 'magna', 2);
-insert into programs (name, category, profile_id) values ('duis', 'ultrices', 3);
-insert into programs (name, category, profile_id) values ('montes', 'leo', 10);
-insert into programs (name, category, profile_id) values ('sit', 'at', 4);
-insert into programs (name, category, profile_id) values ('aliquam', 'tincidunt', 5);
-insert into programs (name, category, profile_id) values ('nulla', 'congue', 6);
-insert into programs (name, category, profile_id) values ('tristique', 'gravida', 7);
-insert into programs (name, category, profile_id) values ('magnis', 'id', 8);
-insert into programs (name, category, profile_id) values ('gravida', 'vel', 9);
+insert into programs (name, category, profile_id) values ('Cool workout programme', 'though', 1);
+insert into programs (name, category, profile_id) values ('The beast', 'medium', 2);
+insert into programs (name, category, profile_id) values ('Coolest workout programme', 'though', 3);
+insert into programs (name, category, profile_id) values ('Second coolest workout programme', 'easy', 10);
+insert into programs (name, category, profile_id) values ('Alright workout programme', 'easy', 4);
+insert into programs (name, category, profile_id) values ('Fitness King', 'easy', 5);
+insert into programs (name, category, profile_id) values ('Fitness Queen', 'though', 6);
+insert into programs (name, category, profile_id) values ('Downward dog', 'medium', 7);
+insert into programs (name, category, profile_id) values ('Programme for Programmers', 'easy', 8);
+insert into programs (name, category, profile_id) values ('Meh programme', 'easy', 9);
 
 insert into workouts_programs (workouts_id, programs_id) values (1,1);
 insert into workouts_programs (workouts_id, programs_id) values (2,1);
