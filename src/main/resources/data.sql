@@ -44,18 +44,18 @@ insert into workouts (name, type, complete) values ('sit', 'tristique', true);
 insert into workouts (name, type, complete) values ('nec', 'accumsan', true);
 insert into workouts (name, type, complete) values ('dapibus', 'dui', false);
 
-insert into sets (exercise_repetitions, workout_id ) values (45, 1);
-insert into sets (exercise_repetitions, workout_id ) values (5, 1);
-insert into sets (exercise_repetitions, workout_id ) values (10, 1);
-insert into sets (exercise_repetitions, workout_id ) values (83, 2);
-insert into sets (exercise_repetitions, workout_id ) values (41, 3);
-insert into sets (exercise_repetitions, workout_id ) values (11, 4);
-insert into sets (exercise_repetitions, workout_id ) values (95, 5);
-insert into sets (exercise_repetitions, workout_id ) values (94, 6);
-insert into sets (exercise_repetitions, workout_id ) values (60, 7);
-insert into sets (exercise_repetitions, workout_id ) values (37, 8);
-insert into sets (exercise_repetitions, workout_id ) values (47, 9);
-insert into sets (exercise_repetitions, workout_id ) values (34, 10);
+insert into sets (exercise_repetitions) values (45);
+insert into sets (exercise_repetitions) values (5);
+insert into sets (exercise_repetitions) values (10);
+insert into sets (exercise_repetitions) values (83);
+insert into sets (exercise_repetitions) values (41);
+insert into sets (exercise_repetitions) values (11);
+insert into sets (exercise_repetitions) values (95);
+insert into sets (exercise_repetitions) values (94);
+insert into sets (exercise_repetitions) values (60);
+insert into sets (exercise_repetitions) values (37);
+insert into sets (exercise_repetitions) values (47);
+insert into sets (exercise_repetitions) values (34);
 
 insert into exercises (set_id, name, description, target_muscle_group, image, video_link) values (1,'Crunches', 'Lying on your back, feet on the gound and hands behind your head, crunch up and bring hands to touch knees before rolling back to the ground', 'Core', 'https://image.shutterstock.com/image-vector/woman-doing-crunches-gym-belly-600w-1234348741.jpg', 'https://www.youtube.com/embed/Xyd_fa5zoEU');
 insert into exercises (set_id, name, description, target_muscle_group, image, video_link) values (2,'Side plank', 'Start with elbow, hip and forearm on the floor. Raise hip until armpit level.', 'Core', 'https://image.shutterstock.com/image-photo/side-plank-exercise-athletic-woman-600w-1751568857.jpg', 'https://www.youtube.com/embed/rCxF2nG9vQ0');
@@ -92,12 +92,12 @@ insert into programs (name, category) values ('Downward dog', 'medium');
 insert into programs (name, category) values ('Programme for Programmers', 'easy');
 insert into programs (name, category) values ('Meh programme', 'easy');
 
-insert into workouts_programs (workouts_id, programs_id) values (1,1);
-insert into workouts_programs (workouts_id, programs_id) values (2,1);
-insert into workouts_programs (workouts_id, programs_id) values (8,1);
-insert into workouts_programs (workouts_id, programs_id) values (1,2);
-insert into workouts_programs (workouts_id, programs_id) values (5,2);
-insert into workouts_programs (workouts_id, programs_id) values (1,3);
+insert into programs_workouts (workouts_id, programs_id) values (1,1);
+insert into programs_workouts (workouts_id, programs_id) values (2,1);
+insert into programs_workouts (workouts_id, programs_id) values (8,1);
+insert into programs_workouts (workouts_id, programs_id) values (1,2);
+insert into programs_workouts (workouts_id, programs_id) values (5,2);
+insert into programs_workouts (workouts_id, programs_id) values (1,3);
 
 insert into profiles_programs(programs_id, profiles_id) VALUES (1,1);
 insert into profiles_programs(programs_id, profiles_id) VALUES (1,2);
@@ -109,3 +109,11 @@ insert into profiles_workouts(workouts_id, profiles_id) VALUES (2,1);
 insert into profiles_sets(profiles_id, sets_id) values (1,1);
 insert into profiles_sets(profiles_id, sets_id) values (1,2);
 insert into profiles_sets(profiles_id, sets_id) values (2,1);
+
+INSERT INTO goals_workouts(goals_id, workouts_id) VALUES (1,1);
+INSERT INTO goals_workouts(goals_id, workouts_id) VALUES (1,2);
+INSERT INTO goals_workouts(goals_id, workouts_id) VALUES (1,3);
+
+insert into workouts_sets(workouts_id, sets_id) VALUES (1,1);
+insert into workouts_sets(workouts_id, sets_id) VALUES (1,2);
+insert into workouts_sets(workouts_id, sets_id) VALUES (1,3);

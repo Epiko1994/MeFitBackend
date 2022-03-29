@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,14 +44,12 @@ public class UserController {
     })
     public ResponseEntity<User> getUserById(@PathVariable Integer id) {
         Optional<User> user = userRepository.findById(id);
-        if(user.isEmpty()){
-            return ResponseEntity.notFound().build();
-        }
+        if(user.isEmpty()) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(user.get());
     }
 
     @GetMapping("email/{email}")
-    @Operation(summary = "Get a user by email, else null")
+    @Operation(summary = "Get a user by email")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User found and returned"),
             @ApiResponse(responseCode = "404", description = "User was not found")
@@ -62,7 +61,7 @@ public class UserController {
     }
 
     @PostMapping("")
-    @Operation(summary = "Register a user with empty profile - Returns the new user if saved successful, else null")
+    @Operation(summary = "Register a user with empty profile - Returns path to new user")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "User was successfully created"),
             @ApiResponse(responseCode = "400", description = "User could not be created - user probably already exist")
@@ -79,15 +78,15 @@ public class UserController {
 
     //TODO: Probably not a useful endpoint - does the same as getUserByEmail
     @PostMapping("/login")
-    @Operation(summary = "Send a login request (checks if e-mail exists) - Returns user if found, else null")
+    @Operation(summary = "Send a login request (checks if e-mail exists)")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User was successfully found"),
             @ApiResponse(responseCode = "404", description = "User was not found")
     })
     public ResponseEntity<User> loginUser(@RequestBody User user) {
-        Optional<User> userRequest = userRepository.findByEmail(user.getEmail());
-        if(userRequest.isEmpty()) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(userRequest.get());
+        Optional<User> userOptional = userRepository.findByEmail(user.getEmail());
+        if(userOptional.isEmpty()) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(userOptional.get());
     }
 
     @DeleteMapping
@@ -99,15 +98,15 @@ public class UserController {
     public ResponseEntity<User> deleteUser(@RequestBody User user) {
         Optional<User> userOptional = userRepository.findById(user.getId());
         if(userOptional.isEmpty()) return ResponseEntity.notFound().build();
-        //profileRepository.deleteById(userOptional.get().getProfile().getId());
         userRepository.delete(userOptional.get());
         return ResponseEntity.ok().build();
     }
 
     @PatchMapping("")
-    @Operation(summary = "Update an existing user with new values")
+    @Operation(summary = "Update an existing user with new values - except password")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User was successfully found and updated"),
+            @ApiResponse(responseCode = "403", description = "Changing password is not allowed"),
             @ApiResponse(responseCode = "404", description = "User was not found")
     })
     public ResponseEntity<User> updateUser(@RequestBody User user) {
@@ -115,25 +114,32 @@ public class UserController {
         if(userOptional.isEmpty()) return ResponseEntity.notFound().build();
         else{
             User updateUser = userOptional.get();
-            updateUser.setId(user.getId());
-            if(user.getEmail() != null){
-                 updateUser.setEmail(user.getEmail());
-            }
-            if(user.getProfile() != null){
-                updateUser.setProfile(user.getProfile());
-            }
-            if(user.getFirstName() != null){
-               updateUser.setFirstName(user.getFirstName());
-            }
-
-            if(user.getPassword() != null){
-                updateUser.setPassword(user.getPassword());
-            }
-            if(user.getLastName() != null){
-                updateUser.setLastName(user.getLastName());
-            }
+            if(user.getPassword() != null) return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            if(user.getEmail() != null) updateUser.setEmail(user.getEmail());
+            if(user.getProfile() != null) updateUser.setProfile(user.getProfile());
+            if(user.getFirstName() != null) updateUser.setFirstName(user.getFirstName());
+            if(user.getLastName() != null) updateUser.setLastName(user.getLastName());
 
             return ResponseEntity.ok(userRepository.save(updateUser));
+        }
+    }
+
+    @PatchMapping("/password")
+    @Operation(summary = "Update an existing password")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User was successfully found and updated"),
+            @ApiResponse(responseCode = "404", description = "User was not found"),
+            @ApiResponse(responseCode = "422", description = "No password found in request")
+    })
+    public ResponseEntity<User> updatePassword(@RequestBody User user) {
+        Optional<User> userOptional = userRepository.findById(user.getId());
+        if(userOptional.isEmpty()) return ResponseEntity.notFound().build();
+        else{
+            User updateUser = userOptional.get();
+            if(user.getPassword() != null) {
+                updateUser.setPassword(user.getPassword());
+                return ResponseEntity.ok(userRepository.save(updateUser));
+            } else return ResponseEntity.unprocessableEntity().build();
         }
     }
 }
