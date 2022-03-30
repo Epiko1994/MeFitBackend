@@ -7,7 +7,7 @@ insert into users (password, first_name, last_name, email, is_contributor, is_ad
 insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('aenean', 'Madel', 'McAuliffe', 'mmcauliffe6@howstuffworks.com', false, false);
 insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('sed', 'Kelcey', 'Brashaw', 'kbrashaw7@netscape.com', false, true);
 insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('elit', 'Dyann', 'Keilty', 'dkeilty8@twitpic.com', false, true);
-insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('1234', 'Cool User', 'Dunsire', 'mail@email.com', false, false);
+insert into users (password, first_name, last_name, email, is_contributor, is_admin) values ('1234', 'Cool User', 'Dunsire', 'mail1@email.com', false, false);
 
 insert into addresses (address_line1, postal_code, city, country) values ('418 Independence Alley', 1182, 'Huangma', 'China');
 insert into addresses (address_line1, postal_code, city, country) values ('76652 8th Center', 4982, 'Radzyń Chełmiński', 'Poland');
